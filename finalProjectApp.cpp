@@ -9,4 +9,10 @@ void main()
 	int choice = mainMenu();
 	    choice = teacherMenu();
 	    choice = studentMenu();
+		khgfjhgf
+			kfkhgfhj
+			lkhgfkh
+			khgfkjhgfkh
+
+		hgfjhgjh
 }
