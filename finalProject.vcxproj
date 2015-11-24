@@ -67,8 +67,10 @@
     <ClInclude Include="myHeader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="evaluationImp.cpp" />
     <ClCompile Include="finalProjectApp.cpp" />
     <ClCompile Include="menuImp.cpp" />
+    <ClCompile Include="operationImp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

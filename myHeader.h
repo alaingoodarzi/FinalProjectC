@@ -7,34 +7,30 @@
 #include<string>
 using namespace std;
 
-struct Teacher{
-	   int	teacherID;
+struct UserProfile{
+	   int	userID;
 	string  passWord;
 	string  fname;
 	string  lname;
+	  char tOrS;
 };
 
 struct Course{
 	string courseID;
 	string courseTitle;
-	   int groupID;
 	   int teacherID;
+	   int group;
 };
 
-struct Group{
-	int groupID;
-	int group;
-};
-
-struct Student{
-	   int studentID;
-	string passWord;
-	string fname;
-	string lname;
-};
+//struct Group{
+//	int groupID;
+//	int group;
+//};
 
 struct StudentResult{
 	int teacherID;
+	int studentID;
+	int groupID;
 	int courseID;
 	float midtremExam;
 	float finalExamExam;
@@ -42,14 +38,14 @@ struct StudentResult{
 };
 
 struct Buffer{
-	int stdID;
+	   int stdID;
 	string stdFname;
 	string stdLname;
 	string stdPass;
 
-	int stdTeacherID;
-	string stdTeacherFname;
-	string stdTeacherLname;
+   	   int tchID;
+	string tchFname;
+	string tchLname;
 	
 	int stdCourseID;
 	int stdCourse;
@@ -71,9 +67,17 @@ struct Buffer{
 
 //prototype functions
 
-// Validation
+// Validation and control functions
 int checkDigits();
-
+char getMenuChoiceOK(int);
+int intValue(int,string);
+string strValue(string);
+string firstLettersCapital(string);
+string removeExcessSpace(string);
+string shortenString(string,int);
+char myYesNo(string);
+char exitByCTRLX();
+int exitPrompt(string,int);
 
 
 
@@ -92,8 +96,16 @@ void reportTitle();
 void listHeader();
 void listRecords();
 void listDisplay();
+int initValues(UserProfile [],int [], Course []);
+
+
+
 
 int listcourses();  // teacher & student
+
+
+
+
 
 int mainMenu();
 int teacherMenu();
@@ -102,6 +114,7 @@ int studentMenu();
 
 
 //teacher: 
+int teacherOperations(int, int&);
 int addStudentGrade();
 
 int searchStd(int);
@@ -112,6 +125,7 @@ int listCourseStudentsGrades();
 
 
 //student
+int studentOperation(int, int&);
 int viewGradeComponent();
 int listCourseGades();
 
