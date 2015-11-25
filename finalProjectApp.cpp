@@ -5,18 +5,17 @@ using namespace std;
 
 void main()
 {
-	const int MAX = 3;
+	const int MAX = 10;
 	int counter = 0;
 
 	UserProfile arrUserProfile[MAX];
 	Course arrCourses[MAX];
-	int arrGroups[MAX];
+	Groups arrGroups[MAX];
 	StudentResult arrStudentResults[MAX];
-	Buffer tmpStdRslt;
+	Buffer tmpData;
 
 	welcomePage();
-	initValues(arrUserProfile,arrGroups,arrCourses);
-
+	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, tmpData);
 	int choice = 0;
 	do
 	{
@@ -24,7 +23,7 @@ void main()
 		switch(choice)
 		{
 			case 1 :
-				teacherOperations(MAX,counter);
+				teacherOperations(MAX,counter,arrUserProfile,arrCourses,tmpData);
 				break;
 			case 2 :
 				studentOperation(MAX,counter);

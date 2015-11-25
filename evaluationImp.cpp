@@ -47,8 +47,6 @@ int intValue(int maxNumber, string message)
 }
 
 
-
-
 string strValue(string message)
 {
 	 const regex REGEX_ONLYNUMBERS("^[a-zA-Z ]*$");

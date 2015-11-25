@@ -35,11 +35,6 @@ int mainMenu()
 
 	return choice;
 }
-
-
-
-
-
 int studentMenu()
 {
 	const string TITLE="STUDENT MENU";
@@ -61,8 +56,6 @@ int studentMenu()
 	return choice;
 
 }
-
-
 int teacherMenu()
 {
 
@@ -88,9 +81,20 @@ int teacherMenu()
 	return choice;
 
 }
-
 void welcomePage()
 {
+	//Introduction
+	//Development Process
+		//Analysis
+		//Design
+		//Implementatio
+		//Testing (form)
+	//Conclusion
+		//what learned
+		//The worth issue spend more time in logic and coding
+		//demo from exe file. with a plan
+
+
 	system("cls");
 	const string TITLE2="By";
 	const string TITLE3="Alireza Goodarzi";
@@ -112,8 +116,6 @@ void welcomePage()
 
 	system("pause > null");
 }
-
-
 void programTitle()
 {
 	const string TITLE1="STUDENT GRADE SYSTEM";
@@ -121,7 +123,6 @@ void programTitle()
 	cout << setw(TITLE1.length()/2 + 40) << TITLE1 << endl << endl;
 	cout << "\n";
 }
-
 //int mainMenuLater()
 //{
 //		int choice = 0;
@@ -152,13 +153,6 @@ void programTitle()
 //
 //	return choice;
 //}
-
-
-
-
-
-
-
 // lab4 
 // function:   myCout1 
 // action:     This function displays a string with special effect
@@ -167,7 +161,6 @@ void programTitle()
 // used by:    every where we use cout 
 // created by: Alireza Goodarzi
 // 
-
 void myCout1(string myText, int noEndls, int noTabs)
 {
 	
@@ -257,7 +250,6 @@ void myCout1(string myText, int noEndls, int noTabs)
 	delete x;
 	return;
 }
-
 // lab4 
 // function:   myMenu1 
 // action:     This function displays a menu with special effects
@@ -266,7 +258,6 @@ void myCout1(string myText, int noEndls, int noTabs)
 //             beginning line, 
 //             beginning column, 
 //             random char display speed in milliseconds, 
-
 // returns:    none
 // used by:    mainmenu()
 // created by: Alireza Goodarzi

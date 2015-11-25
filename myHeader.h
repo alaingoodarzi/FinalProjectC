@@ -16,16 +16,18 @@ struct UserProfile{
 };
 
 struct Course{
-	string courseID;
+
+	   int courseN;
+    string courseID;
 	string courseTitle;
 	   int teacherID;
 	   int group;
 };
 
-//struct Group{
-//	int groupID;
-//	int group;
-//};
+struct Groups{
+	int groupN;
+	int groupID;
+};
 
 struct StudentResult{
 	int teacherID;
@@ -93,11 +95,17 @@ int addCourse();
 int footer();
 
 void reportTitle();
-void listHeader();
-void listRecords();
-void listDisplay();
-int initValues(UserProfile [],int [], Course []);
 
+
+void listDisplay();
+
+void initialValues( UserProfile[], Groups[], Course[], int, Buffer);
+
+
+// list Functions
+string leftMarginSpace(string[], int);
+void listHeader(string[],int);
+void listRecord();
 
 
 
@@ -114,7 +122,8 @@ int studentMenu();
 
 
 //teacher: 
-int teacherOperations(int, int&);
+int teacherOperations( int, int&, UserProfile[], Course[], Buffer tmpData );
+int teacherCourses(Course[], Buffer tmpData);
 int addStudentGrade();
 
 int searchStd(int);
