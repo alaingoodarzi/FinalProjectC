@@ -19,7 +19,7 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 			break;
 		case 2 :
 			//"Add Student Grade";
-			addStudentGrade(MAX, counter, arrUserProfile,arrCourse, arrGroups, arrStudentResult, tmpData);
+			addStudentGrade(arrUserProfile,arrCourse, arrGroups, arrStudentResult, tmpData, MAX, counter );
 			break;
 		case 3 :
 			cout << "third teacher choice";
@@ -98,19 +98,31 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 			tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
 		}
 		
-		tmpData->stdCourseID = chooseCourse(arrCourse, tmpData->stdGroupID ,MAX);
-		
+		tmpData->stdCourseID = chooseCourse(arrCourse, tmpData->stdGroupID ,MAX, tmpData);
+
 		if (stdCrsDuplicate(arrStudentResult, tmpData->stdCourseID, tmpData->stdID, counter ) == true)
 		{
 			getStudentGrade(arrStudentResult, tmpData->tchID,tmpData->stdCourseID, tmpData->stdID);
 
-			cout << "\n\tStudent first name: " << tmpData->stdFname << endl;
-			cout << "\n\tStudent last name: " << tmpData->stdLname << endl;
-			cout << "\n\tStudent password: " << tmpData->stdPass << endl;
+			cout << "\n\tStudent Projecte: " << tmpData->stdProject << endl;
+			cout << "\n\tStudent last name: " << tmpData->stdMidterm << endl;
+			cout << "\n\tStudent password: " << tmpData->stdFinal << endl;
+		}else
+		{
+ 
+			tmpData->stdProject = floatValue(100,"Please enter the Project grade");
+			tmpData->stdMidterm = floatValue(100,"Please enter the Midtrem exam grade");
+			tmpData->stdFinal = floatValue(100,"Please enter the Final exam grade");
+						
+			displayNewStudent(tmpData);
+
+			if(myYesNo("Do you want to save this student") == 'Y')
+			{
+				counter++;
+			}
 		}
 		
 
-		counter++;
 	} while (counter < MAX);
 }
 
@@ -125,7 +137,7 @@ void getStudentGrade(StudentResult arrStudentResult[],int teacherID,string Cours
 int newStdID(UserProfile arrUserProfile[], int &counter, int MAX)
 {
 	int newId = 0;
-	cout << "\n\tPlease enetr a 7 digit number for student ID (" << counter << "/" << MAX << "): ";
+	cout << "\n\tPlease enetr a 7 digit number for student ID (" << counter + 1 << "/" << MAX << "): ";
 	while(!(cin >> newId ) || (newId < 1000000 || newId > 9999999) )
 	{
 		cout << "\n\tInavlid! Try again (7 digit number): ";

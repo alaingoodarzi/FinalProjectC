@@ -47,6 +47,36 @@ int intValue(int maxNumber, string message)
 }
 
 
+float floatValue(int maxNumber, string message)
+{
+	 const regex REGEX_ONLYNUMBERS("^[0-9.]*$");
+	 string number;
+	 cout << "\n\t" << message << " (" << maxNumber << " maximum): ";
+	 do
+	 {
+		getline(cin,number);
+		
+		if ( regex_match(number, REGEX_ONLYNUMBERS))
+		{
+			float jNumber;
+			istringstream ( number ) >> jNumber;
+			if(jNumber <= 100)
+			{
+				return jNumber;
+			}else
+			{
+				cout << "\n\tInvalid grade!\n\t" << message << " (" << maxNumber << " maximum): ";
+			}
+        }
+        else
+        {
+            cout << "\n\tInvalid entry!\n\t" << message << " (" << maxNumber << " maximum): ";
+        }
+	}while(true);
+}
+
+
+
 string strValue(string message)
 {
 	 const regex REGEX("^[a-zA-Z ]*$");
@@ -230,4 +260,18 @@ bool stdCrsDuplicate(StudentResult arrStudentResult[], string courseID, int stud
 		}
 	}
 	return false;
+}
+
+void displayNewStudent(Buffer *tmpData)
+{
+	cout << "\n\t New Grade information: " << endl;
+	cout << "\t Student ID:         " << tmpData->stdID          << endl 
+		 << "\t Student Name:       " << tmpData->stdFname       << endl
+		 << "\t Student Family:     " << tmpData->stdLname       << endl
+		 << "\t Student Group:      " << tmpData->stdGroupID     << endl
+		 << "\t Course ID:          " << tmpData->stdCourseID    << endl
+		 << "\t Course Name:        " << tmpData->stdCourseTitle << endl
+		 << "\t Progect grade:      " << tmpData->stdProject     << endl
+		 << "\t Midterm Grade:      " << tmpData->stdMidterm     << endl
+		 << "\t Final Grade:        " << tmpData->stdFinal       << endl;
 }

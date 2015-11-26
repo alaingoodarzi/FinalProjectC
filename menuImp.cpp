@@ -103,7 +103,7 @@ int chooseGroup(Groups arrGroups[], int MAX)
 }
 
 
-string chooseCourse(Course arrCourses[], int groupID, int MAX)
+void chooseCourse(Course arrCourses[], int groupID, int MAX, Buffer *tmpData)
 {
 	cout << "\n\tPlease select the course: ";
 
@@ -129,9 +129,11 @@ string chooseCourse(Course arrCourses[], int groupID, int MAX)
 	}
 	cout << "\n\t\t\t\t\t\tEnter course number:";
 	int choice = getMenuChoiceOK( counter );
-	string tmpString= arrTmp[choice];
+
+	string tmpString= arrTmp[choice - 1];
+
 	delete [] arrTmp;
-	return tmpString;
+	tmpData->stdCourseID = tmpString;
 }
 
 
