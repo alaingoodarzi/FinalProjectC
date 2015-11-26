@@ -5,7 +5,7 @@
 
 
 
-int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Buffer *tmpData)
+int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData)
 {
 	int choice = 0 ;
 	do
@@ -19,7 +19,7 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 			break;
 		case 2 :
 			//"Add Student Grade";
-			addStudentGrade(MAX, &counter, arrUserProfile,arrCourse, *tmpData);
+			addStudentGrade(MAX, counter, arrUserProfile,arrCourse, arrGroups, arrStudentResult, tmpData);
 			break;
 		case 3 :
 			cout << "third teacher choice";
@@ -59,10 +59,14 @@ int teacherCourses( Course arrCourses[], Buffer *tmpData)
 	return 0;
 }
 
-int addStudentGrade(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Buffer *tmpData)
+
+
+
+int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
 {
 
-
+	system("cls");
+	cout << "\n\n\n\t\t\t\tSTUDENT GRADE FORM" << endl << endl << endl << endl;
 
 	if (counter == MAX)
 	{
@@ -72,25 +76,61 @@ int addStudentGrade(int MAX, int &counter, UserProfile arrUserProfile[], Course 
 
 	do
 	{
-		newStdID(arrUserProfile, counter);
-	
-	
+		bool jFound = false;
+		tmpData->stdID = newStdID(arrUserProfile, counter, MAX);
+		int jIndex = 0;
+		jIndex = checkIdDuplication(arrUserProfile, counter, tmpData->stdID);
+		if (jIndex != 0 )
+		{
+			jFound = true;
+			tmpData->stdFname = arrUserProfile[jIndex].fname;
+			tmpData->stdLname = arrUserProfile[jIndex].lname;
+			tmpData->stdPass = arrUserProfile[jIndex].passWord;
+			cout << "\n\tStudent first name: " << tmpData->stdFname << endl;
+			cout << "\n\tStudent last name: " << tmpData->stdLname << endl;
+			cout << "\n\tStudent password: " << tmpData->stdPass << endl;
+		}else
+		{
+			cin.ignore();
+			tmpData->stdFname = newNameFamily("Please enter student name");
+			tmpData->stdLname = newNameFamily("Please enter student family");
+			tmpData->stdPass = strUserPass("Please enter student password(alphanumeric)");
+			tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
+		}
+		
+		tmpData->stdCourseID = chooseCourse(arrCourse, tmpData->stdGroupID ,MAX);
+		
+		if (stdCrsDuplicate(arrStudentResult, tmpData->stdCourseID, tmpData->stdID, counter ) == true)
+		{
+			getStudentGrade(arrStudentResult, tmpData->tchID,tmpData->stdCourseID, tmpData->stdID);
+
+			cout << "\n\tStudent first name: " << tmpData->stdFname << endl;
+			cout << "\n\tStudent last name: " << tmpData->stdLname << endl;
+			cout << "\n\tStudent password: " << tmpData->stdPass << endl;
+		}
+		
+
+		counter++;
 	} while (counter < MAX);
+}
 
 
-
+void getStudentGrade(StudentResult arrStudentResult[],int teacherID,string CourseID, int stdID)
+{
 
 }
 
 
-int newStdID(UserProfile arrUserProfile[], int &counter)
+
+int newStdID(UserProfile arrUserProfile[], int &counter, int MAX)
 {
 	int newId = 0;
-		while(!(cin >> newId ) || (newId > 999999 && newId < 10000000))
-		{
-			cout << "\n\tInavlid! Try again (7 digit number): ";
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(),'\n');
-		}	
-		return checkDuplicateID(arrUserProfile, counter, newId);
+	cout << "\n\tPlease enetr a 7 digit number for student ID (" << counter << "/" << MAX << "): ";
+	while(!(cin >> newId ) || (newId < 1000000 || newId > 9999999) )
+	{
+		cout << "\n\tInavlid! Try again (7 digit number): ";
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
+	}	
+	return newId;
 }

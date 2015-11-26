@@ -49,20 +49,41 @@ int intValue(int maxNumber, string message)
 
 string strValue(string message)
 {
-	 const regex REGEX_ONLYNUMBERS("^[a-zA-Z ]*$");
+	 const regex REGEX("^[a-zA-Z ]*$");
 	 string jString;
 	 cout << "\n\t" << message << ": ";
 	 do
 	 {
-		getline(cin,jString);
+		 getline(cin,jString);
 		
-		if (regex_match(jString, REGEX_ONLYNUMBERS))
+		if (regex_match(jString, REGEX))
 		{	
 			return jString;
         }
         else
         {
             cout << "\n\tInvalid entry!\n\t" << message << " : ";
+        }
+	}while(true);
+}
+
+string strUserPass(string message)
+{
+	 const regex REGEX("^[a-zA-Z1-9]*$");
+	 string jString;
+	 cout << "\n\t" << message << ": ";
+	 do
+	 {
+
+		 getline(cin,jString);
+		
+		if (regex_match(jString, REGEX))
+		{	
+			return jString;
+        }
+        else
+        {
+            cout << "\n\tSpace and non-alphanumeric is not allowed !\n\t" << message << " : ";
         }
 	}while(true);
 }
@@ -185,15 +206,28 @@ int exitPrompt(string message, int exitValue)
 	}
 }
 
-bool checkIdDuplication(UserProfile arrUserProfile[], int &counter, int newID)
+int checkIdDuplication(UserProfile arrUserProfile[], int &counter, int newID)  // need to be changed using pointer
 {
 	for (int i = 0; i < counter; i++)
 	{
 		if (arrUserProfile[i].userID == newID)
 		{
-			cout << "\n\tDuplicate ID! Try again (7 digit number): ";
-			return false;
+			cout << "\n\tTHis student already exists in the list!";
+			return i;  // index of student in array arrUserProfile
 		}
 	}
-	return true;
+	return 0;
+}
+
+bool stdCrsDuplicate(StudentResult arrStudentResult[], string courseID, int studentID,int &counter)
+{
+		for (int i = 0; i < counter; i++)
+	{
+		if ((arrStudentResult[i].studentID == studentID) && (arrStudentResult[i].courseID == courseID))
+		{
+			cout << "\n\tTHis course is already registered for the student!";
+			return true;  // the course and student are duplicated
+		}
+	}
+	return false;
 }

@@ -1,8 +1,21 @@
-﻿Build started 11/25/2015 8:08:14 PM.
+﻿Build started 11/26/2015 2:56:37 PM.
      1>Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt operationImp.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt evaluationImp.cpp finalProjectApp.cpp menuImp.cpp operationImp.cpp studentImp.cpp
+         studentImp.cpp
          operationImp.cpp
+         menuImp.cpp
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(258): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(268): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(347): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(360): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         finalProjectApp.cpp
+         evaluationImp.cpp
+     1>c:\structureprograminglabs\finalprojectc\evaluationimp.cpp(96): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\evaluationimp.cpp(130): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\evaluationimp.cpp(151): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\evaluationimp.cpp(161): warning C4018: '>' : signed/unsigned mismatch
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.lib" /MACHINE:X86 Debug\evaluationImp.obj
          Debug\finalProjectApp.obj
@@ -10,9 +23,10 @@
          Debug\operationImp.obj
          Debug\studentImp.obj
          Debug\teacherImp.obj
-         finalProject.vcxproj -> C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe
-     1>Done Building Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" (Build target(s)).
+     1>teacherImp.obj : error LNK2019: unresolved external symbol "int __cdecl addStudentGrade(int,int &,struct UserProfile * const,struct Course * const,struct Groups * const,struct StudentResult * const,struct Buffer *)" (?addStudentGrade@@YAHHAAHQAUUserProfile@@QAUCourse@@QAUGroups@@QAUStudentResult@@PAUBuffer@@@Z) referenced in function "int __cdecl teacherOperations(int,int &,struct UserProfile * const,struct Course * const,struct Groups * const,struct StudentResult * const,struct Buffer *)" (?teacherOperations@@YAHHAAHQAUUserProfile@@QAUCourse@@QAUGroups@@QAUStudentResult@@PAUBuffer@@@Z)
+     1>C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.39
+Time Elapsed 00:00:08.73

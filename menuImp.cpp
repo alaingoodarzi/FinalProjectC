@@ -82,6 +82,59 @@ int teacherMenu()
 
 }
 
+int chooseGroup(Groups arrGroups[], int MAX)
+{
+	cout << "\n\tPlease select student group: ";
+	int i = 0;
+	for ( i = 0; i < MAX; i++)
+	{
+		if (arrGroups[i].groupN > 0)
+		{
+			cout << "\n\t\t\t\t" << arrGroups[i].groupN << "." << arrGroups[i].groupID;
+		}
+		else
+		{
+			break;
+		}
+	}
+	cout << "\n\t\t\t\t\t\tEnter group number:";
+	int choice = getMenuChoiceOK( i );
+	return arrGroups[choice-1].groupID;
+}
+
+
+string chooseCourse(Course arrCourses[], int groupID, int MAX)
+{
+	cout << "\n\tPlease select the course: ";
+
+	string *arrTmp;
+	arrTmp = new string[MAX];
+	int counter = 0;
+
+	for ( int i = 0; i < MAX; i++)
+	{
+		if (arrCourses[i].courseN > 0)
+		{
+			if (arrCourses[i].groupID == groupID)
+			{
+				cout << "\n\t\t\t\t" << counter + 1 << "." << arrCourses[i].courseID;
+				arrTmp[counter] = arrCourses[i].courseID;
+				counter++;
+			}
+		}
+		else
+		{
+			break;
+		}
+	}
+	cout << "\n\t\t\t\t\t\tEnter course number:";
+	int choice = getMenuChoiceOK( counter );
+	string tmpString= arrTmp[choice];
+	delete [] arrTmp;
+	return tmpString;
+}
+
+
 void welcomePage()
 {
 	//Introduction

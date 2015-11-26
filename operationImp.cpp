@@ -45,25 +45,25 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrCourses[0].courseID = "420-P16-AS";
 	arrCourses[0].courseTitle = "Structured Programming";
 	arrCourses[0].teacherID = 5257;
-	arrCourses[0].group = 7148;
+	arrCourses[0].groupID = 7148;
 
 	arrCourses[1].courseN = 2;
 	arrCourses[1].courseID = "420-P16-AS";
 	arrCourses[1].courseTitle = "Structured Programming";
 	arrCourses[1].teacherID = 5257;
-	arrCourses[1].group = 7150;
+	arrCourses[1].groupID = 7150;
 
 	arrCourses[2].courseN = 3;
 	arrCourses[2].courseID = "420-P16-AS";
 	arrCourses[2].courseTitle = "Introduction à la programmation structurée";
 	arrCourses[2].teacherID = 5257;
-	arrCourses[2].group = 7151;
+	arrCourses[2].groupID = 7151;
 
 	arrCourses[3].courseN = 4;
 	arrCourses[3].courseID = "420-P34-AS";
 	arrCourses[3].courseTitle = "Advanced Object Programming";
 	arrCourses[3].teacherID = 5257;
-	arrCourses[3].group = 7256;
+	arrCourses[3].groupID = 7256;
 	for (int i = 4; i < MAX; i++)
 	{
 		arrCourses[i].courseN = 0;
@@ -104,7 +104,7 @@ void listRecord(Course arrCourses[], string listTitles[],int titleLenghts[],  Bu
 			cout <<left << leftMargin << "  "
 				 << setw( titleLenghts[1] + 2)  << arrCourses[counter].courseID
 				 << setw( titleLenghts[2] + 2)  << arrCourses[counter].courseTitle
-				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].group << endl;
+				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].groupID << endl;
 			counter++;
 		}
 
@@ -134,3 +134,10 @@ void titleLength(int titleLenghts[], string listTitles[])
 	}
 }
 
+string newNameFamily(string prompt)
+{
+	string jName= strValue(prompt);
+	jName = removeExcessSpace(jName);
+	jName = firstLettersCapital(jName);
+	return jName;
+}

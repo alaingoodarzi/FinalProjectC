@@ -23,7 +23,7 @@ void main()
 		switch(choice)
 		{
 			case 1 :
-				teacherOperations(MAX,counter,arrUserProfile,arrCourses,&tmpData);
+				teacherOperations(MAX,counter,arrUserProfile,arrCourses,arrGroups,arrStudentResults,&tmpData);
 				break;
 			case 2 :
 				studentOperation(MAX,counter);
