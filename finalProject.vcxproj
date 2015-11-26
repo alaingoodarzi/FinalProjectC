@@ -71,6 +71,8 @@
     <ClCompile Include="finalProjectApp.cpp" />
     <ClCompile Include="menuImp.cpp" />
     <ClCompile Include="operationImp.cpp" />
+    <ClCompile Include="studentImp.cpp" />
+    <ClCompile Include="teacherImp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

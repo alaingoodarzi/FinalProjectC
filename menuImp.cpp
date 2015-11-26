@@ -81,6 +81,7 @@ int teacherMenu()
 	return choice;
 
 }
+
 void welcomePage()
 {
 	//Introduction
@@ -123,6 +124,8 @@ void programTitle()
 	cout << setw(TITLE1.length()/2 + 40) << TITLE1 << endl << endl;
 	cout << "\n";
 }
+
+
 //int mainMenuLater()
 //{
 //		int choice = 0;

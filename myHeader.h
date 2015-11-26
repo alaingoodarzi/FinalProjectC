@@ -99,14 +99,14 @@ void reportTitle();
 
 void listDisplay();
 
-void initialValues( UserProfile[], Groups[], Course[], int, Buffer);
+void initialValues( UserProfile[], Groups[], Course[], int, Buffer*);
 
 
 // list Functions
 string leftMarginSpace(string[], int);
-void listHeader(string[],int);
-void listRecord();
-
+void listHeader(string[],int, int[]);
+void listRecord(Course[], string[], int[], Buffer *);
+void titleLength(int[], string[]);
 
 
 int listcourses();  // teacher & student
@@ -122,9 +122,12 @@ int studentMenu();
 
 
 //teacher: 
-int teacherOperations( int, int&, UserProfile[], Course[], Buffer tmpData );
-int teacherCourses(Course[], Buffer tmpData);
-int addStudentGrade();
+int teacherOperations( int, int&, UserProfile[], Course[], Buffer *);
+int teacherCourses(Course[], Buffer *);
+int addStudentGrade(int, int&, UserProfile[], Course[], Buffer *);
+int newStdID(UserProfile[]);
+bool checkDuplicateID(UserProfile[], int&, int);
+
 
 int searchStd(int);
 int searchStd(string,char);

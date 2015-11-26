@@ -184,3 +184,16 @@ int exitPrompt(string message, int exitValue)
 		return 0;
 	}
 }
+
+bool checkIdDuplication(UserProfile arrUserProfile[], int &counter, int newID)
+{
+	for (int i = 0; i < counter; i++)
+	{
+		if (arrUserProfile[i].userID == newID)
+		{
+			cout << "\n\tDuplicate ID! Try again (7 digit number): ";
+			return false;
+		}
+	}
+	return true;
+}

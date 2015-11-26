@@ -14,8 +14,8 @@ void main()
 	StudentResult arrStudentResults[MAX];
 	Buffer tmpData;
 
-	welcomePage();
-	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, tmpData);
+	//welcomePage();
+	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData);
 	int choice = 0;
 	do
 	{
@@ -23,7 +23,7 @@ void main()
 		switch(choice)
 		{
 			case 1 :
-				teacherOperations(MAX,counter,arrUserProfile,arrCourses,tmpData);
+				teacherOperations(MAX,counter,arrUserProfile,arrCourses,&tmpData);
 				break;
 			case 2 :
 				studentOperation(MAX,counter);

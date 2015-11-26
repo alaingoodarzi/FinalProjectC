@@ -3,79 +3,7 @@
 #include<iomanip>
 #include"myHeader.h"
 
-
-int studentOperation(int MAX, int& counter)
-{
-	int choice = 0 ;
-	do
-	{
-		choice = studentMenu();
-		switch(choice)
-		{
-		case 1 :
-			cout << "Fisrt student choice";
-			break;
-		case 2 :
-			cout << "second student choice";
-			break;
-		case 3 :
-			cout << "third student choice";
-			break;
-		case 4 :
-			choice = exitPrompt("Are you sure you want to reurn to main menu",4);
-			break;
-		default :
-			break;
-		}
-		system("pause>null");
-
-	}while(choice != 4);
-
-	return 0;
-}
-
-
-int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Buffer tmpData)
-{
-	int choice = 0 ;
-	do
-	{
-		choice = teacherMenu();
-		switch(choice)
-		{
-		case 1 :
-			//1.Course list
-			teacherCourses(arrCourse, tmpData);
-			system("pause");
-			break;
-		case 2 :
-			cout << "second teacher choice";
-			break;
-		case 3 :
-			cout << "third teacher choice";
-			break;
-		case 4 :
-			cout << "forth teacher choice";
-			break;
-		case 5 :
-			cout << "fift teacher choice";
-			break;
-
-		case 6 :
-			choice = exitPrompt("Are you sure you want to reurn to main menu",6);
-			break;
-		default :
-			break;
-		}
-		system("pause>null");
-
-	}while(choice != 6);
-
-	return 0;
-
-}
-
-void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCourses[], int MAX, Buffer tmpData)
+void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCourses[], int MAX, Buffer *tmpData)
 //void initValues(UserProfile arrUserProfile[])
 {
 
@@ -91,9 +19,9 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 
 
 	//temp
-	tmpData.tchID = arrUserProfile[0].userID;
-	tmpData.tchLname = arrUserProfile[0].lname;
-	tmpData.tchFname = arrUserProfile[0].fname;
+	tmpData->tchID = arrUserProfile[0].userID;
+	tmpData->tchLname = arrUserProfile[0].lname;
+	tmpData->tchFname = arrUserProfile[0].fname;
 
 
 
@@ -144,64 +72,45 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 }
 
 
-int teacherCourses( Course arrCourses[], Buffer tmpData)
-{
-	string titles[] = {
-						"TEACHER COURSE LIST",
-						"Number          ",
-						"Title                                          ",
-						"Group     "
-						};
-	listHeader(titles,4);
-	int counter = 0;
-	while (arrCourses[counter].courseN != 0)
-	{
-		cout << 
-		if (arrCourses[counter].teacherID == tmpData.tchID)
-		{
-			cout << arrCourses[counter].courseID << arrCourses[counter].courseTitle << arrCourses[counter].group << endl;
-			counter++;
-		}
-
-	}
-	return 0;
-}
-
-void listHeader(string listTitles[], int titleNumber)
+//List design and display functions
+void listHeader(string listTitles[], int titleNumber, int titleLenghts[])
 {
 	system("cls");
 	programTitle();
-	string leftMargin = leftMarginSpace(listTitles,titleNumber);
+	
 	cout << endl << setw(listTitles[0].length()/2 + 40) << listTitles[0] << endl ;
+
+	string leftMargin = leftMarginSpace(listTitles,titleNumber);
 	cout << "\n" << leftMargin;	
 	for (int i = 1; i < titleNumber; i++)  // from 1 because index 0 is table title
 	{
 		cout <<  setw( listTitles[i].length() + 2) << listTitles[i];
 	}
 	cout << "\n" << leftMargin ;
-
-	
 	for (int i = 1; i < titleNumber; i++)
 	{
 		cout <<  setw( listTitles[i].length() + 2) << string(listTitles[i].length(), '=') ;
 	}
 	cout << "\n";				
-
 }
+void listRecord(Course arrCourses[], string listTitles[],int titleLenghts[],  Buffer *tmpData )
+{
+	string leftMargin = leftMarginSpace(listTitles,4);
+	int counter = 0;
+	while (arrCourses[counter].courseN != 0 )
+	{
+		if (arrCourses[counter].teacherID == tmpData->tchID)
+		{
+			cout <<left << leftMargin << "  "
+				 << setw( titleLenghts[1] + 2)  << arrCourses[counter].courseID
+				 << setw( titleLenghts[2] + 2)  << arrCourses[counter].courseTitle
+				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].group << endl;
+			counter++;
+		}
 
-
-
-
-//void listRecord(string tmp, int index)
-//{
-//
-//	cout << right << setw(   HEDER_STD_ID.length()+10) << studentList[index].id << "   "
-//		 << left << setw(HEDER_STD_FNAME.length()+10) << studentList[index].firstName  
-//		 << left << setw(HEDER_STD_LNAME.length()+10) << studentList[index].lastName << "\n"; 
-//}
-
-
-
+	}
+	cout << right;
+}
 string leftMarginSpace(string listTitles[], int titleNumber)
 {
 	int titleLength = 0;
@@ -217,3 +126,11 @@ string leftMarginSpace(string listTitles[], int titleNumber)
 	}
 	return leftMargin;
 }
+void titleLength(int titleLenghts[], string listTitles[])
+{
+	for (int i = 0; i < 4; i++)
+	{
+		titleLenghts[i] = listTitles[i].length();
+	}
+}
+

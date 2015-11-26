@@ -32,5 +32,11 @@
     <ClCompile Include="operationImp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="studentImp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="teacherImp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
