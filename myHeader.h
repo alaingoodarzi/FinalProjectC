@@ -21,7 +21,7 @@ struct Course{
     string courseID;
 	string courseTitle;
 	   int teacherID;
-	   int group;
+   	   int groupID;
 };
 
 struct Groups{
@@ -33,7 +33,7 @@ struct StudentResult{
 	int teacherID;
 	int studentID;
 	int groupID;
-	int courseID;
+	string courseID;
 	float midtremExam;
 	float finalExamExam;
 	float Project;
@@ -49,8 +49,8 @@ struct Buffer{
 	string tchFname;
 	string tchLname;
 	
-	int stdCourseID;
-	int stdCourse;
+	string stdCourseID;
+	string stdCourseTitle;
 	
 	float stdMidterm;
 	float stdFinal;
@@ -80,8 +80,8 @@ string shortenString(string,int);
 char myYesNo(string);
 char exitByCTRLX();
 int exitPrompt(string,int);
-
-
+string strUserPass(string);
+float floatValue(int, string);
 
 //General functions
 void welcomePage();
@@ -94,12 +94,19 @@ int addGroup();
 int addCourse();
 int footer();
 
+bool stdCrsDuplicate(StudentResult[],string, int, int&);
+
+
+
 void reportTitle();
-
-
 void listDisplay();
 
 void initialValues( UserProfile[], Groups[], Course[], int, Buffer*);
+
+string newNameFamily(string);
+
+int chooseGroup(Groups[], int);
+void chooseCourse(Course[], int, int, Buffer*);
 
 
 // list Functions
@@ -122,12 +129,15 @@ int studentMenu();
 
 
 //teacher: 
-int teacherOperations( int, int&, UserProfile[], Course[], Buffer *);
+int teacherOperations( int, int&, UserProfile[], Course[],Groups[],StudentResult[], Buffer *);
 int teacherCourses(Course[], Buffer *);
-int addStudentGrade(int, int&, UserProfile[], Course[], Buffer *);
-int newStdID(UserProfile[]);
-bool checkDuplicateID(UserProfile[], int&, int);
+int addStudentGrade( UserProfile[], Course[], Groups[], StudentResult[], Buffer *, int, int&);
+int newStdID(UserProfile[], int&,int);
+int checkIdDuplication(UserProfile[], int&, int);
 
+void displayNewStudent(Buffer*);
+
+void getStudentGrade(StudentResult[],int,string, int);
 
 int searchStd(int);
 int searchStd(string,char);
