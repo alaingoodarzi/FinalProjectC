@@ -105,6 +105,8 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 		{
 			getStudentGrade(arrStudentResult, tmpData->tchID,tmpData->stdCourseID, tmpData->stdID);
 
+			
+			
 			cout << "\t     Project grade: " << tmpData->stdProject << endl;
 			cout << "\tMidtrem exam grade: " << tmpData->stdMidterm << endl;
 			cout << "\t  Final exam grade: " << tmpData->stdFinal   << endl;
@@ -129,7 +131,7 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 }
 void getStudentGrade(StudentResult arrStudentResult[],int teacherID,string CourseID, int stdID)
 {
-
+	dorost shaavad
 }
 int newStdID(UserProfile arrUserProfile[], int &counter, int MAX)
 {

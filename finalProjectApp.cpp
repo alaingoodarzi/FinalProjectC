@@ -11,7 +11,7 @@ void main()
 	UserProfile arrUserProfile[MAX];
 	Course arrCourses[MAX];
 	Groups arrGroups[MAX];
-	StudentResult arrStudentResults[MAX+10];
+	StudentResult arrStudentResults[MAX];
 	Buffer tmpData;
 
 	//welcomePage();
