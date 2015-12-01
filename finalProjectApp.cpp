@@ -11,11 +11,11 @@ void main()
 	UserProfile arrUserProfile[MAX];
 	Course arrCourses[MAX];
 	Groups arrGroups[MAX];
-	StudentResult arrStudentResults[MAX];
+	StudentResult arrStudentResults[MAX+10];
 	Buffer tmpData;
 
 	//welcomePage();
-	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData);
+	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData, counter, arrStudentResults);
 	int choice = 0;
 	do
 	{

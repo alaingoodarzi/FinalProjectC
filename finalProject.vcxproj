@@ -67,15 +67,13 @@
     <ClInclude Include="myHeader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="evaluationImp.cpp" />
+    <ClCompile Include="validationImp.cpp" />
     <ClCompile Include="finalProjectApp.cpp" />
     <ClCompile Include="menuImp.cpp" />
     <ClCompile Include="operationImp.cpp" />
+    <ClCompile Include="uiDesignImp.cpp" />
     <ClCompile Include="studentImp.cpp" />
     <ClCompile Include="teacherImp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

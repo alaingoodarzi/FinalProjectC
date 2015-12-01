@@ -12,6 +12,7 @@ struct UserProfile{
 	string  passWord;
 	string  fname;
 	string  lname;
+	   int groupID;
 	  char tOrS;
 };
 
@@ -85,7 +86,9 @@ float floatValue(int, string);
 
 //General functions
 void welcomePage();
+void pageTitle(string);
 void programTitle();
+void formTitle(string, int&, int);
 
 int login();
 int addUser();   // teacher& student
@@ -101,7 +104,7 @@ bool stdCrsDuplicate(StudentResult[],string, int, int&);
 void reportTitle();
 void listDisplay();
 
-void initialValues( UserProfile[], Groups[], Course[], int, Buffer*);
+void initialValues( UserProfile[], Groups[], Course[], int, Buffer*, int&, StudentResult[]);
 
 string newNameFamily(string);
 
@@ -144,6 +147,8 @@ int searchStd(string,char);
 
 int sortStudent();
 int listCourseStudentsGrades();
+
+void saveStudentInfo(UserProfile[], StudentResult[], Buffer *, int&);
 
 
 //student
