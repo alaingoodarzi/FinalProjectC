@@ -3,7 +3,7 @@
 #include<iomanip>
 #include"myHeader.h"
 
-void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCourses[], int MAX, Buffer *tmpData)
+void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCourses[], int MAX, Buffer *tmpData, int &counter, StudentResult arrStudentResult[])
 //void initValues(UserProfile arrUserProfile[])
 {
 
@@ -12,7 +12,9 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrUserProfile[0].fname    = "Quang Hoang";
 	arrUserProfile[0].lname    = "Cao";
 	arrUserProfile[0].tOrS     = 't';
-	for (int i = 1; i < MAX; i++)
+	counter++;
+
+	for (int i = 7; i < MAX; i++)   // temp is 7 need to be 1
 	{
 		arrUserProfile[i].userID = 0;
 	}
@@ -64,76 +66,116 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrCourses[3].courseTitle = "Advanced Object Programming";
 	arrCourses[3].teacherID = 5257;
 	arrCourses[3].groupID = 7256;
-	for (int i = 4; i < MAX; i++)
+
+	arrCourses[4].courseN = 5;
+	arrCourses[4].courseID = "420-P16-XX";
+	arrCourses[4].courseTitle = "XXXXXX Programming";
+	arrCourses[4].teacherID = 5257;
+	arrCourses[4].groupID = 7148;
+
+
+	for (int i = 5; i < MAX; i++)
 	{
 		arrCourses[i].courseN = 0;
 	}
 
-}
+
+	//tmp data for test and simulation
 
 
-//List design and display functions
-void listHeader(string listTitles[], int titleNumber, int titleLenghts[])
-{
-	system("cls");
-	programTitle();
-	
-	cout << endl << setw(listTitles[0].length()/2 + 40) << listTitles[0] << endl ;
+    arrUserProfile[1].userID   =  1234567;
+	arrUserProfile[1].passWord = "1234567";
+	arrUserProfile[1].fname    = firstLettersCapital(removeExcessSpace("AAAAAAA"));
+	arrUserProfile[1].lname    = firstLettersCapital(removeExcessSpace("AAA"));
+	arrUserProfile[1].groupID  = 7148 ;
+	arrUserProfile[1].tOrS     = 's';
+	counter++;
 
-	string leftMargin = leftMarginSpace(listTitles,titleNumber);
-	cout << "\n" << leftMargin;	
-	for (int i = 1; i < titleNumber; i++)  // from 1 because index 0 is table title
-	{
-		cout <<  setw( listTitles[i].length() + 2) << listTitles[i];
-	}
-	cout << "\n" << leftMargin ;
-	for (int i = 1; i < titleNumber; i++)
-	{
-		cout <<  setw( listTitles[i].length() + 2) << string(listTitles[i].length(), '=') ;
-	}
-	cout << "\n";				
-}
-void listRecord(Course arrCourses[], string listTitles[],int titleLenghts[],  Buffer *tmpData )
-{
-	string leftMargin = leftMarginSpace(listTitles,4);
-	int counter = 0;
-	while (arrCourses[counter].courseN != 0 )
-	{
-		if (arrCourses[counter].teacherID == tmpData->tchID)
-		{
-			cout <<left << leftMargin << "  "
-				 << setw( titleLenghts[1] + 2)  << arrCourses[counter].courseID
-				 << setw( titleLenghts[2] + 2)  << arrCourses[counter].courseTitle
-				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].groupID << endl;
-			counter++;
-		}
+	arrUserProfile[2].userID   = 1234568;
+	arrUserProfile[2].passWord = "1234568";
+	arrUserProfile[2].fname    = "BBBBBBBBB";
+	arrUserProfile[2].lname    = "BBB";
+	arrUserProfile[2].groupID  = 7151 ;
+	arrUserProfile[2].tOrS     = 's';
+	counter++;
 
-	}
-	cout << right;
-}
-string leftMarginSpace(string listTitles[], int titleNumber)
-{
-	int titleLength = 0;
-	for (int i = 1; i < titleNumber; i++)   // from 1 because index 0 is table title
-	{
-		titleLength += listTitles[i].length() + 2;
-	}
-	int titleLeftSpace = 40 - titleLength /2 ;
-	string leftMargin = "";
-	for (int i = 0; i < titleLeftSpace; i++)
-	{
-		leftMargin = leftMargin + ' ' ;
-	}
-	return leftMargin;
-}
-void titleLength(int titleLenghts[], string listTitles[])
-{
-	for (int i = 0; i < 4; i++)
-	{
-		titleLenghts[i] = listTitles[i].length();
-	}
-}
+	arrUserProfile[3].userID   = 1234569;
+	arrUserProfile[3].passWord = "1234569";
+	arrUserProfile[3].fname    = "CCCCCCCCC";
+	arrUserProfile[3].lname    = "CCC";
+	arrUserProfile[3].groupID  = 7256 ;
+	arrUserProfile[3].tOrS     = 's';
+	counter++;
 
+	arrUserProfile[4].userID   = 1234570;
+	arrUserProfile[4].passWord = "1234570";
+	arrUserProfile[4].fname    = "DDDDDDDDDDDDD";
+	arrUserProfile[4].lname    = "DDD";
+	arrUserProfile[4].groupID  = 7148 ;
+	arrUserProfile[4].tOrS     = 's';
+	counter++;
+
+	arrUserProfile[5].userID   = 1234571;
+	arrUserProfile[5].passWord = "1234571";
+	arrUserProfile[5].fname    = "EEEEEEEEE";
+	arrUserProfile[5].lname    = "EEE";
+	arrUserProfile[5].groupID  = 7148 ;
+	arrUserProfile[5].tOrS     = 's';
+	counter++;
+
+	// tmp result for simulation
+	arrStudentResult[0].studentID = 1234567;
+	arrStudentResult[0].teacherID = 5257;
+	arrStudentResult[0].groupID = 7148 ;
+	arrStudentResult[0].courseID = "420-P16-XX";
+	arrStudentResult[0].Project = 90.5f;
+	arrStudentResult[0].midtremExam = 90.5f;
+	arrStudentResult[0].finalExam = 90.5f;
+
+	arrStudentResult[1].studentID = 1234567;
+	arrStudentResult[1].teacherID = 5257;
+	arrStudentResult[1].groupID =7148 ;
+	arrStudentResult[1].courseID = "420-P16-AS";
+	arrStudentResult[1].Project = 92.5;
+	arrStudentResult[1].midtremExam = 92.5;
+	arrStudentResult[1].finalExam = 92.5;
+
+	arrStudentResult[2].studentID = 1234568;
+	arrStudentResult[2].teacherID = 5257;
+	arrStudentResult[2].groupID = 7151 ;
+	arrStudentResult[2].courseID = "420-P16-AS";
+	arrStudentResult[2].Project = 93.5;
+	arrStudentResult[2].midtremExam = 93.5;
+	arrStudentResult[2].finalExam = 93.5;
+
+	arrStudentResult[3].studentID = 1234569;
+	arrStudentResult[3].teacherID = 5257;
+	arrStudentResult[3].groupID = 7256 ;
+	arrStudentResult[3].courseID = "420-P34-AS";
+	arrStudentResult[3].Project = 90.5;
+	arrStudentResult[3].midtremExam = 90.5;
+	arrStudentResult[3].finalExam = 9.5;
+
+	arrStudentResult[4].studentID = 1234570;
+	arrStudentResult[4].teacherID = 5257;
+	arrStudentResult[4].groupID =7148 ;
+	arrStudentResult[4].courseID = "420-P16-XX";
+	arrStudentResult[4].Project = 80.5f;
+	arrStudentResult[4].midtremExam = 80.5f;
+	arrStudentResult[4].finalExam = 80.5f;
+
+	arrStudentResult[5].studentID = 1234571;
+	arrStudentResult[5].teacherID = 5257;
+	arrStudentResult[5].groupID =7148 ;
+	arrStudentResult[5].courseID = "420-P16-XX";
+	arrStudentResult[5].Project = 81.5;
+	arrStudentResult[5].midtremExam = 81.5;
+	arrStudentResult[5].finalExam = 81.5;
+
+
+
+
+}
 string newNameFamily(string prompt)
 {
 	string jName= strValue(prompt);
@@ -142,3 +184,33 @@ string newNameFamily(string prompt)
 	return jName;
 }
 
+int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter)
+{
+	int userID = 0;
+	userID = intValue(7, "Please enter student ID: ");
+	for (int i = 0; i < counter; i++)
+	{
+		if (arrUserProfile[i].userID == userID)
+		{
+			tmpData->stdID = arrUserProfile[i].userID;
+			tmpData->stdFname = arrUserProfile[i].fname;
+			tmpData->stdLname = arrUserProfile[i].lname;
+			tmpData->stdPass = arrUserProfile[i].passWord;
+			tmpData->stdGroupID = arrUserProfile[i].groupID;
+			return tmpData->stdID;
+			break;
+		}
+	}
+	tmpData->stdID = userID;
+	return -1;
+}
+
+
+int searchUser(UserProfile[],char);
+int searchUser(UserProfile[],string);
+
+void pausePrompt(string message)
+{
+	cout << "\n\t" << message;
+	system("pause>nul");
+}

@@ -26,9 +26,6 @@
     <ClCompile Include="menuImp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="evaluationImp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="operationImp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,8 +35,16 @@
     <ClCompile Include="teacherImp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="validationImp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uiDesignImp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="note.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

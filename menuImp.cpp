@@ -9,7 +9,9 @@
 #include<ctype.h>
 
 
-
+// I am looking for fare wage
+// Clinical Reasearch Organization. JSS CRO Companey.(john sampalace)
+// Wolf medical data,
 
 using namespace std;
 //******* for password
@@ -82,103 +84,30 @@ int teacherMenu()
 
 }
 
-int chooseGroup(Groups arrGroups[], int MAX)
+
+int teacherGradeSearchMenu()
 {
-	cout << "\n\tPlease select student group: ";
-	int i = 0;
-	for ( i = 0; i < MAX; i++)
-	{
-		if (arrGroups[i].groupN > 0)
-		{
-			cout << "\n\t\t\t\t" << arrGroups[i].groupN << "." << arrGroups[i].groupID;
-		}
-		else
-		{
-			break;
-		}
-	}
-	cout << "\n\t\t\t\t\t\tEnter group number:";
-	int choice = getMenuChoiceOK( i );
-	return arrGroups[choice-1].groupID;
-}
 
-
-void chooseCourse(Course arrCourses[], int groupID, int MAX, Buffer *tmpData)
-{
-	cout << "\n\tPlease select the course: ";
-
-	string *arrTmp;
-	arrTmp = new string[MAX];
-	int counter = 0;
-
-	for ( int i = 0; i < MAX; i++)
-	{
-		if (arrCourses[i].courseN > 0)
-		{
-			if (arrCourses[i].groupID == groupID)
-			{
-				cout << "\n\t\t\t\t" << counter + 1 << "." << arrCourses[i].courseID;
-				arrTmp[counter] = arrCourses[i].courseID;
-				counter++;
-			}
-		}
-		else
-		{
-			break;
-		}
-	}
-	cout << "\n\t\t\t\t\t\tEnter course number:";
-	int choice = getMenuChoiceOK( counter );
-
-	string tmpString= arrTmp[choice - 1];
-
-	delete [] arrTmp;
-	tmpData->stdCourseID = tmpString;
-}
-
-
-void welcomePage()
-{
-	//Introduction
-	//Development Process
-		//Analysis
-		//Design
-		//Implementatio
-		//Testing (form)
-	//Conclusion
-		//what learned
-		//The worth issue spend more time in logic and coding
-		//demo from exe file. with a plan
-
+	int choice = 0;
 
 	system("cls");
-	const string TITLE2="By";
-	const string TITLE3="Alireza Goodarzi";
-	const string TITLE4="LaSalle College";
-	const string TITLE5="Automn 2015";
-	const string TITLE6="Teacher";
-	const string TITLE7="Quang Hoang Cao ";
-	const string TITLE8="Press any key ...";
+	const string TITLE="GRADE SEARCH MENU";
+	cout << "\n\n\n"
+		<< setw(TITLE.length()/2 + 40) << TITLE ;
 
+	cout << "\n\n\t" 
+		 << "\n\t1.By Student ID " 
+		 << "\n\t2.By student first name"
+		 << "\n\t3.By student last name"                // by Student ID/First Name/Last Name/First Name and Last Name"
+		 << "\n\t4.BY stdent first and last name"
+		 << "\n\t5.Exit";
 
-	programTitle();
-	cout << setw(TITLE2.length()/2 + 40) << TITLE2 << endl  << endl; 
-	cout << setw(TITLE3.length()/2 + 40) << TITLE3 << endl << endl << endl; 
-	cout << setw(TITLE4.length()/2 + 40) << TITLE4 << endl ; 
-	cout << setw(TITLE5.length()/2 + 40) << TITLE5 << endl << endl  << endl << endl; 
-	cout << setw(TITLE6.length()/2 + 40) << TITLE6 << endl  << endl; 
-	cout << setw(TITLE7.length()/2 + 40) << TITLE7 << endl << endl << endl << endl << endl; 
-	cout << right << setw(74) << TITLE8 ; 
+	cout << "\n\n\tPlease select(1/5)? ";
+	choice = getMenuChoiceOK(5);
 
-	system("pause > null");
+	return choice;
 }
-void programTitle()
-{
-	const string TITLE1="STUDENT GRADE SYSTEM";
-	cout << "\n\n";
-	cout << setw(TITLE1.length()/2 + 40) << TITLE1 << endl << endl;
-	cout << "\n";
-}
+
 
 
 //int mainMenuLater()

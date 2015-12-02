@@ -15,7 +15,7 @@ void main()
 	Buffer tmpData;
 
 	//welcomePage();
-	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData);
+	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData, counter, arrStudentResults);
 	int choice = 0;
 	do
 	{
