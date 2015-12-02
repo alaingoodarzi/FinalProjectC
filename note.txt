@@ -1,0 +1,53 @@
+struct UserProfile{
+	   int	userID;
+	string  passWord;
+	string  fname;
+	string  lname;
+	   int groupID;
+	  char tOrS;
+};
+
+struct Course{
+
+	   int courseN;
+    string courseID;
+	string courseTitle;
+	   int teacherID;
+   	   int groupID;
+};
+
+struct Groups{
+	int groupN;
+	int groupID;
+};
+
+struct StudentResult{
+	int teacherID;
+	int studentID;
+	int groupID;
+	string courseID;
+	float midtremExam;
+	float finalExam;
+	float Project;
+};
+
+struct Buffer{
+	   int stdID;
+	string stdFname;
+	string stdLname;
+	string stdPass;
+
+   	   int tchID;
+	string tchFname;
+	string tchLname;
+	
+	string stdCourseID;
+	string stdCourseTitle;
+	
+	float stdMidterm;
+	float stdFinal;
+	float stdProject;
+	
+	int stdGroupID;
+	int stdGroup;
+};

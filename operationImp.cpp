@@ -85,8 +85,8 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 
     arrUserProfile[1].userID   =  1234567;
 	arrUserProfile[1].passWord = "1234567";
-	arrUserProfile[1].fname    = "AAAAAAA";
-	arrUserProfile[1].lname    = "AAA";
+	arrUserProfile[1].fname    = firstLettersCapital(removeExcessSpace("AAAAAAA"));
+	arrUserProfile[1].lname    = firstLettersCapital(removeExcessSpace("AAA"));
 	arrUserProfile[1].groupID  = 7148 ;
 	arrUserProfile[1].tOrS     = 's';
 	counter++;
@@ -130,7 +130,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[0].courseID = "420-P16-XX";
 	arrStudentResult[0].Project = 90.5f;
 	arrStudentResult[0].midtremExam = 90.5f;
-	arrStudentResult[0].finalExamExam = 90.5f;
+	arrStudentResult[0].finalExam = 90.5f;
 
 	arrStudentResult[1].studentID = 1234567;
 	arrStudentResult[1].teacherID = 5257;
@@ -138,7 +138,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[1].courseID = "420-P16-AS";
 	arrStudentResult[1].Project = 92.5;
 	arrStudentResult[1].midtremExam = 92.5;
-	arrStudentResult[1].finalExamExam = 92.5;
+	arrStudentResult[1].finalExam = 92.5;
 
 	arrStudentResult[2].studentID = 1234568;
 	arrStudentResult[2].teacherID = 5257;
@@ -146,7 +146,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[2].courseID = "420-P16-AS";
 	arrStudentResult[2].Project = 93.5;
 	arrStudentResult[2].midtremExam = 93.5;
-	arrStudentResult[2].finalExamExam = 93.5;
+	arrStudentResult[2].finalExam = 93.5;
 
 	arrStudentResult[3].studentID = 1234569;
 	arrStudentResult[3].teacherID = 5257;
@@ -154,7 +154,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[3].courseID = "420-P34-AS";
 	arrStudentResult[3].Project = 90.5;
 	arrStudentResult[3].midtremExam = 90.5;
-	arrStudentResult[3].finalExamExam = 9.5;
+	arrStudentResult[3].finalExam = 9.5;
 
 	arrStudentResult[4].studentID = 1234570;
 	arrStudentResult[4].teacherID = 5257;
@@ -162,7 +162,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[4].courseID = "420-P16-XX";
 	arrStudentResult[4].Project = 80.5f;
 	arrStudentResult[4].midtremExam = 80.5f;
-	arrStudentResult[4].finalExamExam = 80.5f;
+	arrStudentResult[4].finalExam = 80.5f;
 
 	arrStudentResult[5].studentID = 1234571;
 	arrStudentResult[5].teacherID = 5257;
@@ -170,7 +170,7 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 	arrStudentResult[5].courseID = "420-P16-XX";
 	arrStudentResult[5].Project = 81.5;
 	arrStudentResult[5].midtremExam = 81.5;
-	arrStudentResult[5].finalExamExam = 81.5;
+	arrStudentResult[5].finalExam = 81.5;
 
 
 
@@ -184,3 +184,33 @@ string newNameFamily(string prompt)
 	return jName;
 }
 
+int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter)
+{
+	int userID = 0;
+	userID = intValue(7, "Please enter student ID: ");
+	for (int i = 0; i < counter; i++)
+	{
+		if (arrUserProfile[i].userID == userID)
+		{
+			tmpData->stdID = arrUserProfile[i].userID;
+			tmpData->stdFname = arrUserProfile[i].fname;
+			tmpData->stdLname = arrUserProfile[i].lname;
+			tmpData->stdPass = arrUserProfile[i].passWord;
+			tmpData->stdGroupID = arrUserProfile[i].groupID;
+			return tmpData->stdID;
+			break;
+		}
+	}
+	tmpData->stdID = userID;
+	return -1;
+}
+
+
+int searchUser(UserProfile[],char);
+int searchUser(UserProfile[],string);
+
+void pausePrompt(string message)
+{
+	cout << "\n\t" << message;
+	system("pause>nul");
+}

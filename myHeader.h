@@ -2,7 +2,6 @@
 #define	AG_FINAL_PROJECT
 
 
-
 #include<iostream>
 #include<string>
 using namespace std;
@@ -36,7 +35,7 @@ struct StudentResult{
 	int groupID;
 	string courseID;
 	float midtremExam;
-	float finalExamExam;
+	float finalExam;
 	float Project;
 };
 
@@ -89,6 +88,7 @@ void welcomePage();
 void pageTitle(string);
 void programTitle();
 void formTitle(string, int&, int);
+void pausePrompt(string);
 
 int login();
 int addUser();   // teacher& student
@@ -96,8 +96,9 @@ int checkDuplicateID();
 int addGroup();
 int addCourse();
 int footer();
-
+void middleText(string);
 bool stdCrsDuplicate(StudentResult[],string, int, int&);
+int finalResult(float, float , float );
 
 
 
@@ -109,13 +110,13 @@ void initialValues( UserProfile[], Groups[], Course[], int, Buffer*, int&, Stude
 string newNameFamily(string);
 
 int chooseGroup(Groups[], int);
-void chooseCourse(Course[], int, int, Buffer*);
+void chooseCourse(Course[], int, Buffer*);
 
 
 // list Functions
 string leftMarginSpace(string[], int);
-void listHeader(string[],int, int[]);
-void listRecord(Course[], string[], int[], Buffer *);
+void listHeader(string[],int);
+void teacherCoursList(Course[], string[], int[], Buffer *);
 void titleLength(int[], string[]);
 
 
@@ -128,7 +129,7 @@ int listcourses();  // teacher & student
 int mainMenu();
 int teacherMenu();
 int studentMenu();
-
+int teacherGradeSearchMenu();
 
 
 //teacher: 
@@ -140,7 +141,7 @@ int checkIdDuplication(UserProfile[], int&, int);
 
 void displayNewStudent(Buffer*);
 
-void getStudentGrade(StudentResult[],int,string, int);
+void getStudentGrade(StudentResult[],Buffer*, int &);
 
 int searchStd(int);
 int searchStd(string,char);
@@ -149,6 +150,11 @@ int sortStudent();
 int listCourseStudentsGrades();
 
 void saveStudentInfo(UserProfile[], StudentResult[], Buffer *, int&);
+void teacherSearchGradeOperation(UserProfile[], StudentResult[], Course[], Buffer *, int &,int);
+
+
+void gradeList(StudentResult [], Buffer *, int &);
+//bool getUserProfile(UserProfile[], Buffer *, int &, int);
 
 
 //student
@@ -157,6 +163,11 @@ int viewGradeComponent();
 int listCourseGades();
 
 
+
+//returns User ID and sets tmpData or return -1
+int searchUser(UserProfile[],Buffer *, int &);
+int searchUser(UserProfile[],char);
+int searchUser(UserProfile[],string);
 
 
 #endif // !AG_FINAL_PROJECT

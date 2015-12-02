@@ -22,7 +22,8 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 			addStudentGrade(arrUserProfile,arrCourse, arrGroups, arrStudentResult, tmpData, MAX, counter );
 			break;
 		case 3 :
-			cout << "third teacher choice";
+			//"Search student grade";
+			teacherSearchGradeOperation(arrUserProfile, arrStudentResult, arrCourse, tmpData, counter, MAX);
 			break;
 		case 4 :
 			cout << "forth teacher choice";
@@ -54,56 +55,119 @@ int teacherCourses( Course arrCourses[], Buffer *tmpData)
 						"Group  "
 						};
 	titleLength(titleLengths, listTitles);
-	listHeader(listTitles,4, titleLengths);
-	listRecord(arrCourses, listTitles, titleLengths, tmpData );
+	listHeader(listTitles,4);
+	teacherCoursList(arrCourses, listTitles, titleLengths, tmpData );
 	return 0;
 }
+
+
+
+//int addStudentGrade1(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
+//{
+//	if (counter == MAX)
+//	{
+//		cout << "\n\tThe capacity of list is full!";
+//		return 0;
+//	}
+//	do
+//	{
+//		system("cls");
+//		pageTitle("STUDENT GRADE FORM");
+//		formTitle("Please Enter student information", counter, MAX);
+//
+//		bool jFound = false;
+//		tmpData->stdID = intValue(7,"Please enter student ID: ");
+//		int jIndex = 0;
+//		jIndex = checkIdDuplication(arrUserProfile, counter, tmpData->stdID);
+//		if (jIndex > -1 )  // student already in the list
+//		{
+//			jFound = true;
+//			tmpData->stdFname = arrUserProfile[jIndex].fname;
+//			tmpData->stdLname = arrUserProfile[jIndex].lname;
+//			tmpData->stdPass = arrUserProfile[jIndex].passWord;
+//			tmpData->stdGroupID = arrUserProfile[jIndex].groupID;
+//			cout << "\tStudent first name: " << tmpData->stdFname << endl;
+//			cout << "\t Student last name: " << tmpData->stdLname << endl;
+//			cout << "\t  Student password: " << tmpData->stdPass << endl;
+//			cout << "\t     Student group: " << tmpData->stdGroupID << endl;
+//
+//		}else  // new student
+//		{
+//			cin.ignore();
+//			tmpData->stdFname = newNameFamily("Student first name");
+//			tmpData->stdLname = newNameFamily(" Student last name");
+//			tmpData->stdPass = strUserPass   ("Student password(alphanumeric)");
+//			tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
+//		}
+//		
+//		chooseCourse(arrCourse, tmpData->stdGroupID ,MAX, tmpData);
+//
+//		if (stdCrsDuplicate(arrStudentResult, tmpData->stdCourseID, tmpData->stdID, counter ) == true) // student already in the group
+//		{
+//			getStudentGrade(arrStudentResult, tmpData,tmpData->stdCourseID, tmpData->stdID, counter);
+//
+//			
+//			
+//			cout << "\t     Project grade: " << tmpData->stdProject << endl;
+//			cout << "\tMidtrem exam grade: " << tmpData->stdMidterm << endl;
+//			cout << "\t  Final exam grade: " << tmpData->stdFinal   << endl;
+//			cout << "\n\n\tPress any key to add another ID...";
+//			system("pause>nul");
+//		}else
+//		{
+//			cout << endl << endl;
+//			tmpData->stdProject = floatValue(100,"     Project grade");
+//			tmpData->stdMidterm = floatValue(100,"Midtrem exam grade");
+//			tmpData->stdFinal = floatValue  (100,"  Final exam grade");
+//						
+//			displayNewStudent(tmpData);
+//
+//			if(myYesNo("Do you want to save this infromation") == 'Y')
+//			{
+//				saveStudentInfo(arrUserProfile, arrStudentResult, tmpData, counter);
+//				counter++;
+//			}
+//		}
+//	} while (counter < MAX);
+//}
+
+
 int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
 {
-	
 
 	if (counter == MAX)
 	{
 		cout << "\n\tThe capacity of list is full!";
 		return 0;
 	}
-
 	do
 	{
 		system("cls");
 		pageTitle("STUDENT GRADE FORM");
 		formTitle("Please Enter student information", counter, MAX);
 
-		bool jFound = false;
-		tmpData->stdID = newStdID(arrUserProfile, counter, MAX);
-		int jIndex = 0;
-		jIndex = checkIdDuplication(arrUserProfile, counter, tmpData->stdID);
-		if (jIndex > -1 )  // student already in the list
+		
+		if (searchUser(arrUserProfile, tmpData, counter) > -1) //found
 		{
-			jFound = true;
-			tmpData->stdFname = arrUserProfile[jIndex].fname;
-			tmpData->stdLname = arrUserProfile[jIndex].lname;
-			tmpData->stdPass = arrUserProfile[jIndex].passWord;
-			tmpData->stdGroupID = arrUserProfile[jIndex].groupID;
-			cout << "\tStudent first name: " << tmpData->stdFname << endl;
-			cout << "\t Student last name: " << tmpData->stdLname << endl;
-			cout << "\t  Student password: " << tmpData->stdPass << endl;
+			cout << "\tStudent first name: " << tmpData->stdFname   << endl;
+			cout << "\t Student last name: " << tmpData->stdLname   << endl;
+			cout << "\t  Student password: " << tmpData->stdPass    << endl;
 			cout << "\t     Student group: " << tmpData->stdGroupID << endl;
 
 		}else  // new student
 		{
-			cin.ignore();
+			//cin.ignore();
 			tmpData->stdFname = newNameFamily("Student first name");
 			tmpData->stdLname = newNameFamily(" Student last name");
 			tmpData->stdPass = strUserPass   ("Student password(alphanumeric)");
 			tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
 		}
 		
-		chooseCourse(arrCourse, tmpData->stdGroupID ,MAX, tmpData);
+		chooseCourse(arrCourse, MAX, tmpData);
 
 		if (stdCrsDuplicate(arrStudentResult, tmpData->stdCourseID, tmpData->stdID, counter ) == true) // student already in the group
 		{
-			getStudentGrade(arrStudentResult, tmpData->tchID,tmpData->stdCourseID, tmpData->stdID);
+			getStudentGrade(arrStudentResult, tmpData, counter);
 
 			
 			
@@ -129,22 +193,82 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 		}
 	} while (counter < MAX);
 }
-void getStudentGrade(StudentResult arrStudentResult[],int teacherID,string CourseID, int stdID)
+
+
+
+
+
+
+//if user exists, returnd true, sets tmpData if no returm false
+//bool getUserProfile(UserProfile arrUserProfile[],Buffer *tmpData , int &counter, int userID)
+//{
+//	bool jFound = false;
+//	int jIndex = 0;
+//	jIndex = checkIdDuplication(arrUserProfile, counter, userID);
+//	if (jIndex > -1 )  // student already in the list
+//	{
+//		jFound = true;
+//		tmpData->stdID = arrUserProfile[jIndex].userID;
+//		tmpData->stdFname = arrUserProfile[jIndex].fname;
+//		tmpData->stdLname = arrUserProfile[jIndex].lname;
+//		tmpData->stdPass = arrUserProfile[jIndex].passWord;
+//		tmpData->stdGroupID = arrUserProfile[jIndex].groupID;
+//		//cout << "\tStudent first name: " << tmpData->stdFname << endl;
+//		//cout << "\t Student last name: " << tmpData->stdLname << endl;
+//		//cout << "\t  Student password: " << tmpData->stdPass << endl;
+//		//cout << "\t     Student group: " << tmpData->stdGroupID << endl;
+//		return true;
+//	}else  // new student
+//	{
+//		return false;
+//	}
+//}
+
+
+
+
+void getStudentGrade(StudentResult arrStudentResult[], Buffer *tmpData, int &counter)
 {
-	dorost shaavad
-}
-int newStdID(UserProfile arrUserProfile[], int &counter, int MAX)
-{
-	int newId = 0;
-	cout << "\n\t 7 digit ID number: ";
-	while(!(cin >> newId ) || (newId < 1000000 || newId > 9999999) )
+	bool found = false;
+	for (int i = 0; i < counter; i++)
 	{
-		cout << "\n\tInavlid! Try again (7 digit number): ";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(),'\n');
-	}	
-	return newId;
+		if (arrStudentResult[i].studentID == tmpData->stdID)
+		{
+			for (int j = i; j < counter; j++)
+			{
+				if (arrStudentResult[j].courseID == tmpData->stdCourseID)
+				{
+					tmpData->stdProject = arrStudentResult[j].Project;
+					tmpData->stdMidterm = arrStudentResult[j].midtremExam;
+					tmpData->stdFinal = arrStudentResult[j].finalExam; 
+					found = true;
+				}
+				if (found == true)
+				{
+					break;
+				}
+			}
+			if (found == true)
+			{
+				break;
+			}
+		}
+	}
 }
+
+
+//int newStdID(UserProfile arrUserProfile[], int &counter, int MAX) //
+//{
+//	int newId = 0;
+//	cout << "\n\t 7 digit ID number: ";
+//	while(!(cin >> newId ) || (newId < 1000000 || newId > 9999999) )
+//	{
+//		cout << "\n\tInavlid! Try again (7 digit number): ";
+//		cin.clear();
+//		cin.ignore(numeric_limits<streamsize>::max(),'\n');
+//	}	
+//	return newId;
+//}
 int chooseGroup(Groups arrGroups[], int MAX)
 {
 	cout << "\tStudent group: ";
@@ -165,7 +289,7 @@ int chooseGroup(Groups arrGroups[], int MAX)
 
 	return arrGroups[choice-1].groupID;
 }
-void chooseCourse(Course arrCourses[], int groupID, int MAX, Buffer *tmpData)
+void chooseCourse(Course arrCourses[], int MAX, Buffer *tmpData)
 {
 	cout << "\n\tSelect the course: ";
 
@@ -179,7 +303,7 @@ void chooseCourse(Course arrCourses[], int groupID, int MAX, Buffer *tmpData)
 	{
 		if (arrCourses[i].courseN > 0) // prevent searching empty records
 		{
-			if (arrCourses[i].groupID == groupID)
+			if (arrCourses[i].groupID == tmpData->stdGroupID)
 			{
 				cout << "\n\t\t\t" << jCounter + 1 << "." << arrCourses[i].courseID;
 				arrTmpCourseID[jCounter] = arrCourses[i].courseID;
@@ -217,7 +341,7 @@ void saveStudentInfo(UserProfile arrUserProfile[], StudentResult arrStudentResul
 	arrStudentResult[counter].courseID  = tmpData->stdCourseID ;
 	arrStudentResult[counter].Project = tmpData->stdProject;
 	arrStudentResult[counter].midtremExam = tmpData->stdMidterm;
-	arrStudentResult[counter].finalExamExam = tmpData->stdFinal;
+	arrStudentResult[counter].finalExam = tmpData->stdFinal;
 
 }
 
@@ -249,4 +373,115 @@ bool   stdCrsDuplicate(StudentResult arrStudentResult[], string courseID, int st
 		}
 	}
 	return false;
+}
+
+
+void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arrStudentResult[], Course arrCourse[], Buffer *tmpData, int &counter, int MAX)
+{	
+	int choice = 0 ;
+	do
+	{
+		choice = teacherGradeSearchMenu();
+		switch(choice)
+		{
+		case 1 :
+			if (searchUser(arrUserProfile,tmpData, counter) == -1)
+			{
+				pausePrompt("This ID in not in the list!");
+			}else
+			{
+				chooseCourse(arrCourse, MAX, tmpData);
+				gradeList(arrStudentResult, tmpData, counter);
+			}
+			break;
+		case 2 :
+			//searchGradeByName('f');
+			break;
+		case 3 :
+			//searchGradeByName('l');
+			break;
+		case 4 :
+			//serchGradeByName("fl");
+			break;
+		case 5 :
+			choice = exitPrompt("Are you sure you want to reurn to main menu",5);
+			break;
+		default :
+			break;
+		}
+		system("pause>null");
+
+	}while(choice != 5);
+
+}
+
+
+void gradeList(StudentResult arrStudentResult[], Buffer *tmpData, int &counter)
+{
+	system("cls");
+	cout << "\n\n\n\n\n";
+	middleText("Course Number: " + tmpData->stdCourseID + "\n" );
+	middleText("Course Title: " + tmpData->stdCourseTitle + "\n" );
+	middleText("Instructor: " + tmpData->tchFname + " " + tmpData->tchLname + "\n" );
+	middleText("Session: Automn 2015\n" );
+	middleText("Group: " + to_string(tmpData->stdGroupID) + "\n" );
+
+	string listTitles[] = {"ASSESSMENT SUMMERY",
+							"Student ID",
+							"Student Name       ",
+							"project",
+							"Midterm",
+							"Final Exam",
+							"Final Result"};
+	listHeader(listTitles, 7);
+	string leftMargin = leftMarginSpace(listTitles,7);
+
+	for (int i = 0; i < counter; i++)
+	{
+		if (arrStudentResult [i].studentID == tmpData->stdID)
+		{
+			string fullName = tmpData->stdLname + "," + tmpData->stdFname;
+			cout << leftMargin 
+				 << setw( listTitles[1].length() + 2)  << tmpData->stdID << "  "
+				 << left << setw( listTitles[2].length() + 2)  << fullName
+				 << right << setw( listTitles[3].length() )  << arrStudentResult[i].Project
+				 << setw( listTitles[4].length() )  << arrStudentResult[i].midtremExam
+				 << setw( listTitles[5].length() )  << arrStudentResult[i].finalExam
+				 << setw( listTitles[6].length() )  << finalResult(arrStudentResult[i].Project, arrStudentResult[i].midtremExam,arrStudentResult[i].finalExam) << endl;
+		}
+	}
+
+
+	pausePrompt("Press any key to return to menu....");
+	
+}
+
+
+void   teacherCoursList(Course arrCourses[], string listTitles[],int titleLenghts[],  Buffer *tmpData )
+{
+	string leftMargin = leftMarginSpace(listTitles,4);
+	int counter = 0;
+	while (arrCourses[counter].courseN != 0 )
+	{
+		if (arrCourses[counter].teacherID == tmpData->tchID)
+		{
+			cout <<left << leftMargin << "  "
+				 << setw( titleLenghts[1] + 2)  << arrCourses[counter].courseID
+				 << setw( titleLenghts[2] + 2)  << arrCourses[counter].courseTitle
+				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].groupID << endl;
+			counter++;
+		}
+
+	}
+	cout << right;
+}
+
+
+int finalResult(float project, float midTerm, float finalExam)
+{
+	const float PROJECT_WEIGHT   = 0.3f;     //30%
+	const float MIDTERM_WEIGHT   = 0.3f;     //30%
+	const float FINALEXAM_WEIGHT = 0.4f;     //40%
+
+	return floor((project * PROJECT_WEIGHT + midTerm * MIDTERM_WEIGHT + finalExam * FINALEXAM_WEIGHT)  + 0.5 );
 }

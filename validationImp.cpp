@@ -234,3 +234,5 @@ void   displayNewStudent(Buffer *tmpData)
 		 << "\t Midterm Grade:      " << tmpData->stdMidterm     << endl
 		 << "\t Final Grade:        " << tmpData->stdFinal       << endl;
 }
+
+

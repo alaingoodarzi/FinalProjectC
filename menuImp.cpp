@@ -9,7 +9,9 @@
 #include<ctype.h>
 
 
-
+// I am looking for fare wage
+// Clinical Reasearch Organization. JSS CRO Companey.(john sampalace)
+// Wolf medical data,
 
 using namespace std;
 //******* for password
@@ -82,6 +84,29 @@ int teacherMenu()
 
 }
 
+
+int teacherGradeSearchMenu()
+{
+
+	int choice = 0;
+
+	system("cls");
+	const string TITLE="GRADE SEARCH MENU";
+	cout << "\n\n\n"
+		<< setw(TITLE.length()/2 + 40) << TITLE ;
+
+	cout << "\n\n\t" 
+		 << "\n\t1.By Student ID " 
+		 << "\n\t2.By student first name"
+		 << "\n\t3.By student last name"                // by Student ID/First Name/Last Name/First Name and Last Name"
+		 << "\n\t4.BY stdent first and last name"
+		 << "\n\t5.Exit";
+
+	cout << "\n\n\tPlease select(1/5)? ";
+	choice = getMenuChoiceOK(5);
+
+	return choice;
+}
 
 
 

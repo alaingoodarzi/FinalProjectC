@@ -55,6 +55,10 @@ void formTitle(string title, int &counter, int MAX)
 		 << "\n\t" << string(title.length(),'=');
 }
 
+void middleText(string text)
+{
+	cout <<  setw(text.length()/2 + 40) << text;
+}
 
 
 void programTitle()
@@ -67,10 +71,10 @@ void programTitle()
 
 // lists UI design
 
-void   listHeader(string listTitles[], int titleNumber, int titleLenghts[])
+void   listHeader(string listTitles[], int titleNumber)
 {
-	system("cls");
-	programTitle();
+	//system("cls");
+	//programTitle();
 	
 	cout << endl << setw(listTitles[0].length()/2 + 40) << listTitles[0] << endl ;
 
@@ -87,24 +91,7 @@ void   listHeader(string listTitles[], int titleNumber, int titleLenghts[])
 	}
 	cout << "\n";				
 }
-void   listRecord(Course arrCourses[], string listTitles[],int titleLenghts[],  Buffer *tmpData )
-{
-	string leftMargin = leftMarginSpace(listTitles,4);
-	int counter = 0;
-	while (arrCourses[counter].courseN != 0 )
-	{
-		if (arrCourses[counter].teacherID == tmpData->tchID)
-		{
-			cout <<left << leftMargin << "  "
-				 << setw( titleLenghts[1] + 2)  << arrCourses[counter].courseID
-				 << setw( titleLenghts[2] + 2)  << arrCourses[counter].courseTitle
-				 << setw( titleLenghts[3] + 2)  << arrCourses[counter].groupID << endl;
-			counter++;
-		}
 
-	}
-	cout << right;
-}
 string leftMarginSpace(string listTitles[], int titleNumber)
 {
 	int titleLength = 0;
@@ -114,7 +101,7 @@ string leftMarginSpace(string listTitles[], int titleNumber)
 	}
 	int titleLeftSpace = 40 - titleLength /2 ;
 	string leftMargin = "";
-	for (int i = 0; i < titleLeftSpace; i++)
+	for (int i = 0; i < titleLeftSpace/2; i++)
 	{
 		leftMargin = leftMargin + ' ' ;
 	}
