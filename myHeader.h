@@ -99,7 +99,7 @@ int footer();
 void middleText(string);
 bool stdCrsDuplicate(StudentResult[],string, int, int&);
 int finalResult(float, float , float );
-
+string getFullName(UserProfile[], int, int);
 
 
 void reportTitle();
@@ -154,6 +154,9 @@ void teacherSearchGradeOperation(UserProfile[], StudentResult[], Course[], Buffe
 
 
 void gradeList(StudentResult [], Buffer *, int &);
+void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer *, int &, int);
+void sortStudentList(UserProfile[],int, Buffer*);
+void studentList(UserProfile[], int,int[]);
 //bool getUserProfile(UserProfile[], Buffer *, int &, int);
 
 
@@ -166,8 +169,8 @@ int listCourseGades();
 
 //returns User ID and sets tmpData or return -1
 int searchUser(UserProfile[],Buffer *, int &);
-int searchUser(UserProfile[],char);
-int searchUser(UserProfile[],string);
+int searchUser(UserProfile[],Buffer *, int&, char);
+int searchUser(UserProfile[],Buffer *, int&, string);
 
 
 #endif // !AG_FINAL_PROJECT

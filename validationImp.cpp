@@ -212,7 +212,7 @@ char   exitByCTRLX()
 }
 int    exitPrompt(string message, int exitValue)
 {
-	if (myYesNo("Are you sure you want to exit program?") == 'Y')
+	if (myYesNo(message) == 'Y')
 	{
 		//goodByPage();
 		return exitValue;

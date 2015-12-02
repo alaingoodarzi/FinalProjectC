@@ -85,16 +85,16 @@ void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCou
 
     arrUserProfile[1].userID   =  1234567;
 	arrUserProfile[1].passWord = "1234567";
-	arrUserProfile[1].fname    = firstLettersCapital(removeExcessSpace("AAAAAAA"));
-	arrUserProfile[1].lname    = firstLettersCapital(removeExcessSpace("AAA"));
+	arrUserProfile[1].fname    = firstLettersCapital(removeExcessSpace("aLi"));
+	arrUserProfile[1].lname    = firstLettersCapital(removeExcessSpace("rezA"));
 	arrUserProfile[1].groupID  = 7148 ;
 	arrUserProfile[1].tOrS     = 's';
 	counter++;
 
 	arrUserProfile[2].userID   = 1234568;
 	arrUserProfile[2].passWord = "1234568";
-	arrUserProfile[2].fname    = "BBBBBBBBB";
-	arrUserProfile[2].lname    = "BBB";
+	arrUserProfile[2].fname    = "BaLi";
+	arrUserProfile[2].lname    = "Beza";
 	arrUserProfile[2].groupID  = 7151 ;
 	arrUserProfile[2].tOrS     = 's';
 	counter++;
@@ -184,7 +184,7 @@ string newNameFamily(string prompt)
 	return jName;
 }
 
-int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter)
+int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter) // how id,fname,lname,fname+lname
 {
 	int userID = 0;
 	userID = intValue(7, "Please enter student ID: ");
@@ -205,9 +205,170 @@ int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter)
 	return -1;
 }
 
+int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, char how)
+{
+	//const int MAX = 10;
+	string name = "";
+	if (how == 'f')
+	{
+		//name = strValue("\n\n\tPlease enter first name for search");
+		name = newNameFamily("\n\tPlease enter first name for search");
+	}else
+	{
+		//name = strValue("\n\n\tPlease enter last name for search");
+		name = newNameFamily("\n\tPlease enter last name for search");
+	}
+	
+	bool minimumOnePerson = false;
+	for (int i = 0; i < counter; i++)
+	{
+		if (how == 'f')
+		{
+			if (arrUserProfile[i].fname == name)  // if there is minimum one person
+			{
+				minimumOnePerson = true;
+				break;
+			}
+		}
+		else
+		{
+			if (arrUserProfile[i].lname == name)  // if there is minimum one person
+			{
+				minimumOnePerson = true;
+				break;
+			}
+		}
+		
+	}
 
-int searchUser(UserProfile[],char);
-int searchUser(UserProfile[],string);
+	if(minimumOnePerson == true)
+	{
+		cout << "\n\tSelect the user: ";
+		int    *arrTmpStdId;
+		string *arrTmpStdFname;
+		string *arrTmpStdLname;
+		int    *arrTmpStdGroup;
+
+		arrTmpStdId    = new int[counter];
+		arrTmpStdFname = new string[counter];
+		arrTmpStdLname = new string[counter];
+		arrTmpStdGroup = new int[counter];		
+		int jCounter = 0;
+
+		for ( int i = 0; i < counter; i++)
+		{
+			if (how == 'f')
+			{
+				if (arrUserProfile[i].fname == name)
+				{
+					cout << "\n\t\t\t" << jCounter + 1 << "." << arrUserProfile[i].userID << "  " << arrUserProfile[i].fname << "," << arrUserProfile[i].lname   ;
+						arrTmpStdId[jCounter] = arrUserProfile[i].userID;
+						arrTmpStdFname[jCounter] = arrUserProfile[i].fname;
+						arrTmpStdLname[jCounter] = arrUserProfile[i].lname;
+						arrTmpStdGroup[jCounter] = arrUserProfile[i].groupID;
+						jCounter++;
+				}
+			}
+			else  // searches lname
+			{
+				if (arrUserProfile[i].lname == name)
+				{
+					cout << "\n\t\t\t" << jCounter + 1 << "." << arrUserProfile[i].userID << "  " << arrUserProfile[i].lname << "," << arrUserProfile[i].fname;
+						arrTmpStdId[jCounter] = arrUserProfile[i].userID;
+						arrTmpStdFname[jCounter] = arrUserProfile[i].fname;
+						arrTmpStdLname[jCounter] = arrUserProfile[i].lname;
+						arrTmpStdGroup[jCounter] = arrUserProfile[i].groupID;
+						jCounter++;
+				}			
+			}
+		}
+		cout << "\tSelect user (1-" << jCounter << "): ";
+		int choice = getMenuChoiceOK( jCounter );
+		cin.ignore();
+		tmpData->stdID =    arrTmpStdId[choice - 1];
+		tmpData->stdGroupID = arrTmpStdGroup[choice - 1];
+		tmpData->stdFname = arrTmpStdFname [choice - 1];
+		tmpData->stdLname = arrTmpStdLname [choice - 1];
+
+		delete [] arrTmpStdId;
+		delete [] arrTmpStdFname;	
+		delete [] arrTmpStdLname;
+		delete [] arrTmpStdGroup;
+		
+		return tmpData->stdID;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, string how)
+{
+	string name = "";
+	string fName = newNameFamily("\n\tPlease enter first name for search");
+	string lName = newNameFamily("\n\t Please enter last name for search");
+	
+	bool minimumOnePerson = false;
+	for (int i = 0; i < counter; i++)
+	{
+		if (arrUserProfile[i].fname == fName && arrUserProfile[i].lname == lName)  // if there is minimum one person
+		{
+			minimumOnePerson = true;				
+			break;
+		}	
+	}
+
+	if(minimumOnePerson == true)
+	{
+		cout << "\n\tSelect the user: ";
+		int    *arrTmpStdId;
+		string *arrTmpStdFname;
+		string *arrTmpStdLname;
+		int    *arrTmpStdGroup;
+
+		arrTmpStdId    = new int[counter];
+		arrTmpStdFname = new string[counter];
+		arrTmpStdLname = new string[counter];
+		arrTmpStdGroup = new int[counter];		
+		int jCounter = 0;
+
+		for ( int i = 0; i < counter; i++)
+		{
+
+			if (arrUserProfile[i].fname == fName && arrUserProfile[i].lname == lName)
+			{
+				cout << "\n\t\t\t" << jCounter + 1 << "." << arrUserProfile[i].userID << "  " << arrUserProfile[i].fname << "," << arrUserProfile[i].lname   ;
+					arrTmpStdId[jCounter] = arrUserProfile[i].userID;
+					arrTmpStdFname[jCounter] = arrUserProfile[i].fname;
+					arrTmpStdLname[jCounter] = arrUserProfile[i].lname;
+					arrTmpStdGroup[jCounter] = arrUserProfile[i].groupID;
+					jCounter++;
+			}
+		}
+
+		cout << "\tSelect user (1-" << jCounter << "): ";
+		int choice = getMenuChoiceOK( jCounter );
+		cin.ignore();
+		tmpData->stdID =    arrTmpStdId[choice - 1];
+		tmpData->stdGroupID = arrTmpStdGroup[choice - 1];
+		tmpData->stdFname = arrTmpStdFname [choice - 1];
+		tmpData->stdLname = arrTmpStdLname [choice - 1];
+
+		delete [] arrTmpStdId;
+		delete [] arrTmpStdFname;	
+		delete [] arrTmpStdLname;
+		delete [] arrTmpStdGroup;
+		
+		return tmpData->stdID;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+
 
 void pausePrompt(string message)
 {

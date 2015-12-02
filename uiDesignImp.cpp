@@ -39,12 +39,12 @@ void welcomePage()
 
 	system("pause > null");
 }
+
 void pageTitle(string title)
 {
 	//const string TITLE1="STUDENT GRADE SYSTEM";
-	cout << endl
-	     << setw(title.length()/2 + 40) << title 
-		 << endl ;
+	cout << endl << endl
+	     << setw(title.length()/2 + 40) << title ;
 
 }
 
@@ -65,8 +65,7 @@ void programTitle()
 {
 	const string TITLE1="STUDENTS GRADE DATA SYSTEM";
 	cout << endl
-	     << setw(TITLE1.length()/2 + 40) << TITLE1 
-		 << endl ;
+	     << setw(TITLE1.length()/2 + 40) << TITLE1 ;
 }
 
 // lists UI design

@@ -23,9 +23,7 @@ int mainMenu()
 	int choice;
 
 	const string TITLE="MAIN MENU";
-
-	cout << "\n"
-		<< setw(TITLE.length()/2 + 40) << TITLE ;
+	pageTitle(TITLE);
 
 	cout << "\n\n\t" 
 		 << "\n\t1.Teachers"
@@ -39,12 +37,13 @@ int mainMenu()
 }
 int studentMenu()
 {
-	const string TITLE="STUDENT MENU";
+
+	const string TITLE="MAIN MENU/STUDENT MENU";
 	int choice = 0;
 
 	system("cls");
-	cout << "\n\n\n"
-		<< setw(TITLE.length()/2 + 40) << TITLE ;
+	programTitle();
+	pageTitle(TITLE);
 
 	cout << "\n\n\t" 
 		<< "\n\t1.Courses list"
@@ -60,14 +59,14 @@ int studentMenu()
 }
 int teacherMenu()
 {
-
 	int choice = 0;
 
 	system("cls");
-	const string TITLE="TEACHER MENU";
-	cout << "\n\n\n"
-		<< setw(TITLE.length()/2 + 40) << TITLE ;
+	programTitle();
 
+	const string TITLE="MAIN MENU/TEACHER MENU";
+	pageTitle(TITLE);
+	
 	cout << "\n\n\t" 
 		 << "\n\t1.Course list " 
 		 << "\n\t2.Enter students’ grades for a given course"
@@ -87,13 +86,12 @@ int teacherMenu()
 
 int teacherGradeSearchMenu()
 {
-
 	int choice = 0;
 
 	system("cls");
-	const string TITLE="GRADE SEARCH MENU";
-	cout << "\n\n\n"
-		<< setw(TITLE.length()/2 + 40) << TITLE ;
+	programTitle();
+	const string TITLE="MAIN MENU/TEACHER MENU/GRADE SEARCH MENU";
+	pageTitle(TITLE);
 
 	cout << "\n\n\t" 
 		 << "\n\t1.By Student ID " 
