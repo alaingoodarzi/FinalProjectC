@@ -113,7 +113,8 @@ string leftMarginSpace(string[], int);
 void listHeader(string[],int);
 void teacherCoursList(Course[], string[], int[], Buffer *);
 void titleLength(int[], string[]);
-
+void getCourseInfo(Course[], string , Buffer *, int );
+void getTeacherInfo(UserProfile[], Buffer *, int);
 
 int listcourses();  // teacher & student
 
@@ -160,7 +161,7 @@ void getStudentRecord(UserProfile [], Buffer *, int , int &);
 int studentOperation(StudentResult [], Groups[], Course[], UserProfile[], Buffer *, int, int);
 int viewGradeComponent();
 int listCourseGades();
-
+void studentCourseList(UserProfile[], StudentResult[], Course[], int , Buffer *, int);
 
 
 //returns User ID and sets tmpData or return -1

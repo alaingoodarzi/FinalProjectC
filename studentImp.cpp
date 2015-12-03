@@ -20,7 +20,7 @@ int studentOperation(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 		switch(choice)
 		{
 		case 1 :
-			cout << "Fisrt student choice";
+			studentCourseList(arrUserProfile,  arrStudentResult,  arrCourse,  counter,  tmpData,  MAX);
 			break;
 		case 2 :
 			cout << "second student choice";
@@ -43,46 +43,75 @@ int studentOperation(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 	return 0;
 }
 
-void studentCourseList(Course arrCourses[], int MAX, Buffer *tmpData)
+void studentCourseList(UserProfile arrUserProfile[], StudentResult arrStudentResult[], Course arrCourse[], int counter, Buffer *tmpData, int MAX)
 {
-	//cout << "\n\tSelect the course: ";
+	system("cls");
+	programTitle();
+	const string TITLE = "MAIN MENU/STUDENT MENU/COURSE LIST";
+	pageTitle(TITLE);
+	cout << "\n";
 	string listTitles[] = {"COURSE LIST",
-							"Course ID     ",
-							"Course Title                     ",
-							"Teacher NAme        "};
+							"Course ID  ",
+							"Course Title                      ",
+							"Teacher Name     "};
 	listHeader(listTitles, 4);
 	string leftMargin = leftMarginSpace(listTitles,4);
 	// as roie shomare daneshjooi courshash ro peida kone
-	string *arrTmpCourseID
-	string *arrTmpCourseTitle
-	arrTmpCourseID = new string[MAX];
-	arrTmpCourseTitle = new string[MAX];
-	int jCounter = 0;
+	//string *arrTmpCourseID
+	//string *arrTmpCourseTitle
+	//arrTmpCourseID = new string[MAX];
+	//arrTmpCourseTitle = new string[MAX];
+	//int jCounter = 0;
+				
+	string fullName = tmpData->stdLname + "," + tmpData->stdFname;
 
-	for ( int i = 0; i < MAX; i++)
+	for ( int i = 0; i < counter; i++)
 	{
-		if (arrCourses[i].courseN > 0) // prevent searching empty records
+		if (arrStudentResult[i].studentID == tmpData->currentUserId) // prevent searching empty records
 		{
-			if (arrCourses[i].groupID == tmpData->stdGroupID)
-			{
-				cout << "\n\t\t\t" << jCounter + 1 << "." << arrCourses[i].courseID;
-				arrTmpCourseID[jCounter] = arrCourses[i].courseID;
-				arrTmpCourseTitle[jCounter] = arrCourses[i].courseTitle;
-				jCounter++;
+			getCourseInfo(arrCourse, arrStudentResult[i].courseID, tmpData, MAX);
+			getTeacherInfo(arrUserProfile, tmpData, MAX);
+			string courseTitle = tmpData->stdCourseTitle;
+			string teacherName = tmpData->tchLname + "," + tmpData->tchLname;
+			cout << leftMargin << "  "
+				 << left << setw( listTitles[1].length() + 2) << arrStudentResult[i].courseID 
+				 << setw(listTitles[2].length() + 2)  << courseTitle 
+				 << setw( listTitles[3].length() )  << teacherName
+				 << right << endl;
 			}
-		}
 		else
 		{
 			break;
 		}
 	}
-	cout << "\tEnter course number: ";
-	int choice = getMenuChoiceOK( jCounter );
-	//cin.ignore();
-	tmpData->   stdCourseID =    arrTmpCourseID[choice - 1];
-	tmpData->stdCourseTitle = arrTmpCourseTitle[choice - 1];
 
-	delete [] arrTmpCourseID;
-	delete [] arrTmpCourseTitle;
 
+}
+
+
+void getCourseInfo(Course arrCourses[], string courseId, Buffer *tmpData, int MAX)
+{
+	for (int i = 0; i < MAX; i++)
+	{
+		if (arrCourses[i].courseID == courseId)
+		{
+			tmpData->stdCourseTitle =  arrCourses[i].courseTitle;
+			tmpData->tchID = arrCourses[i].teacherID;
+			break;
+		}
+	}
+}
+
+
+void getTeacherInfo(UserProfile arrUserProfile[], Buffer *tmpData, int MAX)
+{
+		for (int i = 0; i < MAX; i++)
+	{
+		if (arrUserProfile[i].userID == tmpData->tchID)
+		{
+			tmpData->tchFname = arrUserProfile[i].fname;
+			tmpData->tchLname = arrUserProfile[i].lname;
+			break;
+		}
+	}
 }
