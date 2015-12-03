@@ -89,8 +89,6 @@ string strValue(string message)
         }
 	}while(true);
 }
-
-
 int strUser()
 {
 	const regex REGEX_ONLYNUMBERS("^[0-9]*$");
@@ -108,8 +106,6 @@ int strUser()
 		return -1;
     }
 }
-
-
 string firstLettersCapital(string str)
 {
 	str[0] = toupper(str[0]);
@@ -181,8 +177,6 @@ string shortenString(string str,int length)
 	}
 	return str + "...";
 }
-
-
 // confirmation functions
 char   myYesNo(string message)
 {

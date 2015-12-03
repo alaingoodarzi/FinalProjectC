@@ -63,7 +63,6 @@ int teacherCourses( Course arrCourses[], Buffer *tmpData)
 	teacherCoursList(arrCourses, listTitles, titleLengths, tmpData );
 	return 0;
 }
-
 int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
 {
 
@@ -212,7 +211,6 @@ int chooseGroup(Groups arrGroups[], int MAX)
 
 	return arrGroups[choice-1].groupID;
 }
-
 void chooseCourse(Course arrCourses[], int MAX, Buffer *tmpData)
 {
 	cout << "\n\tSelect the course: ";
@@ -364,7 +362,9 @@ void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arr
 void gradeList(StudentResult arrStudentResult[], Buffer *tmpData, int &counter)
 {
 	system("cls");
-	cout << "\n\n\n\n\n";
+	programTitle();
+	cout << "\n\n";
+	//("pause");
 	middleText("Course Number: " + tmpData->stdCourseID + "\n" );
 	middleText("Course Title: " + tmpData->stdCourseTitle + "\n" );
 	middleText("Instructor: " + tmpData->tchFname + " " + tmpData->tchLname + "\n" );
@@ -426,10 +426,16 @@ int  finalResult(float project, float midTerm, float finalExam)
 
 	return floor((project * PROJECT_WEIGHT + midTerm * MIDTERM_WEIGHT + finalExam * FINALEXAM_WEIGHT)  + 0.5 );
 }
-
-void courseGradeList(StudentResult arrStudentResult[], Groups arrGroups[], Course arrCourse[], UserProfile arrUserProfile[], Buffer *tmpData, int &counter, int MAX)
+void courseGradeList(StudentResult arrStudentResult[], Groups arrGroups[], Course arrCourse[], UserProfile arrUserProfile[], Buffer *tmpData, int counter, int MAX)
 {
-	tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
+	
+	if(tmpData->currentTorS == 't')  // for use in teacher menu 5. the group of student is already determined
+	{
+		tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
+	}else
+	{
+		cout << tmpData->stdGroupID << endl;
+	}
 	chooseCourse(arrCourse, MAX, tmpData);
 	system("cls");
 	

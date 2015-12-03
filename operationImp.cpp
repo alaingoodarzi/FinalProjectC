@@ -186,7 +186,6 @@ string newNameFamily(string prompt)
 	jName = firstLettersCapital(jName);
 	return jName;
 }
-
 int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter) // how id,fname,lname,fname+lname
 {
 	int userID = 0;
@@ -207,7 +206,6 @@ int searchUser(UserProfile arrUserProfile[], Buffer *tmpData, int &counter) // h
 	tmpData->stdID = userID;
 	return -1;
 }
-
 int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, char how)
 {
 	//const int MAX = 10;
@@ -305,7 +303,6 @@ int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, char 
 		return -1;
 	}
 }
-
 int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, string how)
 {
 	string name = "";
@@ -370,15 +367,11 @@ int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, strin
 		return -1;
 	}
 }
-
-
-
 void pausePrompt(string message)
 {
 	cout << "\n\t" << message;
 	system("pause>nul");
 }
-
 bool userPass(UserProfile arrUserProfile[], Buffer *tmpData, int counter)
 {
 	int user = 0;
@@ -399,6 +392,8 @@ bool userPass(UserProfile arrUserProfile[], Buffer *tmpData, int counter)
 		}
 		else
 		{
+			//cout << "OK" << endl;
+			//system("pause");
 			return true;
 		}
 	}while( jCounter++ < 3 );
@@ -407,8 +402,6 @@ bool userPass(UserProfile arrUserProfile[], Buffer *tmpData, int counter)
 
 	return false;
 }
-
-
 string hiddenPassPhrase(string message, char how)
 {
 	cout << "\t\t\t";
@@ -471,16 +464,20 @@ string hiddenPassPhrase(string message, char how)
 	spass = pass.str();
 	return spass;
 }
-
 bool checkUp(int user,string pass,UserProfile arrUserProfile[],Buffer *tmpData, int counter)
 {
+	pass.erase(pass.size() - 1);
 	for (int i = 0; i < counter; i++)
 	{
-		pass.erase(pass.size() - 1);
+		
 		if (arrUserProfile[i].userID == user && arrUserProfile[i].passWord == pass)
 		{
 			tmpData->currentTorS = arrUserProfile[i].tOrS;
 			tmpData->currentUserId = arrUserProfile[i].userID;
+			tmpData->stdID = arrUserProfile[i].userID;
+			tmpData->stdGroupID = arrUserProfile[i].groupID;
+			tmpData->stdFname = arrUserProfile[i].fname;
+			tmpData->stdLname = arrUserProfile[i].lname;
 			return true;
 		}
 	}

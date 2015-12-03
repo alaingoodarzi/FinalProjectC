@@ -123,7 +123,7 @@ int listcourses();  // teacher & student
 
 int mainMenu();
 int teacherMenu();
-int studentMenu();
+int studentMenu(string);
 int teacherGradeSearchMenu();
 
 
@@ -149,7 +149,7 @@ void teacherSearchGradeOperation(UserProfile[], StudentResult[], Course[], Buffe
 
 
 void gradeList(StudentResult [], Buffer *, int &);
-void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer *, int &, int);
+void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer *, int , int);
 void sortStudentList(UserProfile[],int, Buffer*);
 void courseStudentList(UserProfile[],int,int[],Buffer*);
 void getStudentRecord(UserProfile [], Buffer *, int , int &);
@@ -157,7 +157,7 @@ void getStudentRecord(UserProfile [], Buffer *, int , int &);
 
 
 //student
-int studentOperation(int, int&);
+int studentOperation(StudentResult [], Groups[], Course[], UserProfile[], Buffer *, int, int);
 int viewGradeComponent();
 int listCourseGades();
 

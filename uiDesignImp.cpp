@@ -60,7 +60,6 @@ void welcomePage()
 
 	system("pause>nul");
 }
-
 void pageTitle(string title)
 {
 	//const string TITLE1="STUDENT GRADE SYSTEM";
@@ -68,29 +67,23 @@ void pageTitle(string title)
 	     << setw(title.length()/2 + 40) << title ;
 
 }
-
 void formTitle(string title, int &counter, int MAX)
 {
 	cout << endl
 	     << "\n\t" << title << "(" <<  counter + 1  << "/" << MAX << "):"
 		 << "\n\t" << string(title.length(),'=');
 }
-
 void middleText(string text)
 {
 	cout <<  setw(text.length()/2 + 40) << text;
 }
-
-
 void programTitle()
 {
 	const string TITLE1="STUDENTS GRADE DATA SYSTEM";
 	cout << endl
 	     << setw(TITLE1.length()/2 + 40) << TITLE1 ;
 }
-
 // lists UI design
-
 void   listHeader(string listTitles[], int titleNumber)
 {
 	//system("cls");
@@ -111,7 +104,6 @@ void   listHeader(string listTitles[], int titleNumber)
 	}
 	cout << "\n";				
 }
-
 string leftMarginSpace(string listTitles[], int titleNumber)
 {
 	int titleLength = 0;

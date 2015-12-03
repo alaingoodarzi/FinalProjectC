@@ -14,13 +14,13 @@
 // Wolf medical data,
 
 using namespace std;
-//******* for password
+
 
 int mainMenu()
 {
 	system("cls");
 	programTitle();
-	int choice;
+	int choice = 0;
 
 	const string TITLE="MAIN MENU";
 	pageTitle(TITLE);
@@ -35,9 +35,7 @@ int mainMenu()
 
 	return choice;
 }
-
-
-int studentMenu()
+int studentMenu(string stdFullName)
 {
 
 	const string TITLE="MAIN MENU/STUDENT MENU";
@@ -46,7 +44,7 @@ int studentMenu()
 	system("cls");
 	programTitle();
 	pageTitle(TITLE);
-
+	pageTitle(stdFullName);
 	cout << "\n\n\t" 
 		<< "\n\t1.Courses list"
 		<< "\n\t2.Grade for a given evaluation component"   //(Midterm Exam, Final Project or final Exam) related to a course he/she is taking in this session (Autumn 2015)"
@@ -84,8 +82,6 @@ int teacherMenu()
 	return choice;
 
 }
-
-
 int teacherGradeSearchMenu()
 {
 	int choice = 0;
@@ -107,9 +103,6 @@ int teacherGradeSearchMenu()
 
 	return choice;
 }
-
-
-
 //int mainMenuLater()
 //{
 //		int choice = 0;
