@@ -3,8 +3,9 @@
 #include"myHeader.h"
 using namespace std;
 
-void main()
+int main()
 {
+
 	const int MAX = 10;
 	int counter = 0;
 
@@ -13,17 +14,33 @@ void main()
 	Groups arrGroups[MAX];
 	StudentResult arrStudentResults[MAX];
 	Buffer tmpData;
+			
+
 
 	//welcomePage();
+
+
 	initialValues(arrUserProfile, arrGroups, arrCourses, MAX, &tmpData, counter, arrStudentResults);
 	int choice = 0;
 	do
 	{
+		if (userPass(arrUserProfile, &tmpData, counter) == false)
+		{
+			return -1;
+		}
+
 		choice = mainMenu();
 		switch(choice)
 		{
 			case 1 :
-				teacherOperations(MAX,counter,arrUserProfile,arrCourses,arrGroups,arrStudentResults,&tmpData);
+				if(tmpData.currentTorS == 't' )
+				{
+					teacherOperations(MAX,counter,arrUserProfile,arrCourses,arrGroups,arrStudentResults,&tmpData);
+				}else
+				{
+					middleText("You have no right to enter this part of program !");
+					system("pause>nul");
+				}
 				break;
 			case 2 :
 				studentOperation(MAX,counter);
@@ -35,4 +52,6 @@ void main()
 				break;
 		}
 	}while(choice != 3);
+	
+	return 1;
 }

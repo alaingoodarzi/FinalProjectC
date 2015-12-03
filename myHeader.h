@@ -14,7 +14,6 @@ struct UserProfile{
 	   int groupID;
 	  char tOrS;
 };
-
 struct Course{
 
 	   int courseN;
@@ -23,12 +22,10 @@ struct Course{
 	   int teacherID;
    	   int groupID;
 };
-
 struct Groups{
 	int groupN;
 	int groupID;
 };
-
 struct StudentResult{
 	int teacherID;
 	int studentID;
@@ -38,7 +35,6 @@ struct StudentResult{
 	float finalExam;
 	float Project;
 };
-
 struct Buffer{
 	   int stdID;
 	string stdFname;
@@ -58,13 +54,12 @@ struct Buffer{
 	
 	int stdGroupID;
 	int stdGroup;
+
+	char tOrS;
+
+	char currentTorS;
+	int  currentUserId;
 };
-
-
-
-
-
-
 
 
 //prototype functions
@@ -79,8 +74,8 @@ string removeExcessSpace(string);
 string shortenString(string,int);
 char myYesNo(string);
 char exitByCTRLX();
-int exitPrompt(string,int);
-string strUserPass(string);
+int  exitPrompt(string,int);
+int strUser();
 float floatValue(int, string);
 
 //General functions
@@ -90,15 +85,15 @@ void programTitle();
 void formTitle(string, int&, int);
 void pausePrompt(string);
 
-int login();
-int addUser();   // teacher& student
-int checkDuplicateID();
-int addGroup();
-int addCourse();
-int footer();
+int  login();
+int  addUser();   // teacher& student
+int  checkDuplicateID();
+int  addGroup();
+int  addCourse();
+int  footer();
 void middleText(string);
 bool stdCrsDuplicate(StudentResult[],string, int, int&);
-int finalResult(float, float , float );
+int  finalResult(float, float , float );
 string getFullName(UserProfile[], int, int);
 
 
@@ -109,7 +104,7 @@ void initialValues( UserProfile[], Groups[], Course[], int, Buffer*, int&, Stude
 
 string newNameFamily(string);
 
-int chooseGroup(Groups[], int);
+int  chooseGroup(Groups[], int);
 void chooseCourse(Course[], int, Buffer*);
 
 
@@ -156,7 +151,8 @@ void teacherSearchGradeOperation(UserProfile[], StudentResult[], Course[], Buffe
 void gradeList(StudentResult [], Buffer *, int &);
 void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer *, int &, int);
 void sortStudentList(UserProfile[],int, Buffer*);
-void studentList(UserProfile[], int,int[]);
+void courseStudentList(UserProfile[],int,int[],Buffer*);
+void getStudentRecord(UserProfile [], Buffer *, int , int &);
 //bool getUserProfile(UserProfile[], Buffer *, int &, int);
 
 
@@ -172,5 +168,9 @@ int searchUser(UserProfile[],Buffer *, int &);
 int searchUser(UserProfile[],Buffer *, int&, char);
 int searchUser(UserProfile[],Buffer *, int&, string);
 
+
+bool userPass(UserProfile[], Buffer *, int);
+string hiddenPassPhrase(string, char);
+bool checkUp(int, string, UserProfile [], Buffer *, int);
 
 #endif // !AG_FINAL_PROJECT

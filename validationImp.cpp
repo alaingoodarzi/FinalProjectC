@@ -89,26 +89,27 @@ string strValue(string message)
         }
 	}while(true);
 }
-string strUserPass(string message)
-{
-	 const regex REGEX("^[a-zA-Z1-9]*$");
-	 string jString;
-	 cout << "\t" << message << ": ";
-	 do
-	 {
 
-		 getline(cin,jString);
+
+int strUser()
+{
+	const regex REGEX_ONLYNUMBERS("^[0-9]*$");
+	string number;
+	getline(cin,number);
 		
-		if (regex_match(jString, REGEX))
-		{	
-			return jString;
-        }
-        else
-        {
-            cout << "\tSpace and non-alphanumeric is not allowed !\n\t" << message << " : ";
-        }
-	}while(true);
+	if (regex_match(number, REGEX_ONLYNUMBERS))
+	{
+		int intNumber;
+		istringstream ( number ) >> intNumber;
+		return intNumber;
+    }
+    else
+    {
+		return -1;
+    }
 }
+
+
 string firstLettersCapital(string str)
 {
 	str[0] = toupper(str[0]);

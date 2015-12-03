@@ -1,6 +1,9 @@
 #include<iostream>
 #include<string>
 #include<iomanip>
+#include <conio.h>
+#include <vector>
+#include <sstream>
 #include"myHeader.h"
 
 void initialValues(UserProfile arrUserProfile[],Groups arrGroups[],Course arrCourses[], int MAX, Buffer *tmpData, int &counter, StudentResult arrStudentResult[])
@@ -374,4 +377,112 @@ void pausePrompt(string message)
 {
 	cout << "\n\t" << message;
 	system("pause>nul");
+}
+
+bool userPass(UserProfile arrUserProfile[], Buffer *tmpData, int counter)
+{
+	int user = 0;
+	string pass = "";
+	int jCounter = 1;
+	do
+	{
+		system("cls");
+		programTitle();
+		cout << "\n\n\n\n\n\n\n\n";
+		cout << "\t\t\t\tUserName: ";
+		user = strUser();
+		pass = hiddenPassPhrase("PassWord",'h');
+		if( checkUp(user,pass,arrUserProfile, tmpData, counter) == false)
+		{
+			cout << "\n\n\t\t\tInvalid username or password! " << "(" << jCounter << "/3" << ")  " << pass;
+			system("pause > nul");
+		}
+		else
+		{
+			return true;
+		}
+	}while( jCounter++ < 3 );
+	cout << "\n\n\t\t\t    Your login attempts is over! ";
+	system("pause > nul");
+
+	return false;
+}
+
+
+string hiddenPassPhrase(string message, char how)
+{
+	cout << "\t\t\t";
+	cout << "\t" << message << ": ";
+	stringstream pass;
+	string spass = "";
+	vector<char> passBit(20);    // declares a vector of integers
+	int charNo = 0;
+	
+	do 
+	{
+		passBit[charNo] = _getch();
+		switch(passBit[charNo])
+		{
+			case 13 :
+				for (int j = 0; j < charNo+1 ; j++)
+				{
+					pass << passBit[j];
+				}
+				spass = pass.str();
+				return spass;
+				break;
+			
+			case '\b' :
+				if (charNo > 0)
+				{
+					charNo--;
+					cout << "\b" << " " << "\b";
+				}
+				break;
+			case '*':
+			case '?':
+			case '/':
+			case '\\':
+			case ' ' :
+			case '.':
+			case ',':
+			case ';':
+			case '\'' :
+			case '\"' :
+				break;
+			default:
+				if(how == 'h')
+				{
+					cout << '*';
+				}else
+				{
+					cout << passBit[charNo];
+				}
+				charNo++;
+				break;
+
+		}
+	}while(charNo < 20);
+
+	for (int i = 0; i < 20 ; i++)
+	{
+		pass << passBit[i];
+	}
+	spass = pass.str();
+	return spass;
+}
+
+bool checkUp(int user,string pass,UserProfile arrUserProfile[],Buffer *tmpData, int counter)
+{
+	for (int i = 0; i < counter; i++)
+	{
+		pass.erase(pass.size() - 1);
+		if (arrUserProfile[i].userID == user && arrUserProfile[i].passWord == pass)
+		{
+			tmpData->currentTorS = arrUserProfile[i].tOrS;
+			tmpData->currentUserId = arrUserProfile[i].userID;
+			return true;
+		}
+	}
+	return false;
 }

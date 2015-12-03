@@ -17,7 +17,6 @@ void welcomePage()
 		//The worth issue spend more time in logic and coding
 		//demo from exe file. with a plan
 
-
 	system("cls");
 	const string TITLE2="By";
 	const string TITLE3="Alireza Goodarzi";
@@ -27,17 +26,39 @@ void welcomePage()
 	const string TITLE7="Quang Hoang Cao ";
 	const string TITLE8="Press any key ...";
 
-
 	programTitle();
-	cout << setw(TITLE2.length()/2 + 40) << TITLE2 << endl  << endl; 
-	cout << setw(TITLE3.length()/2 + 40) << TITLE3 << endl << endl << endl; 
-	cout << setw(TITLE4.length()/2 + 40) << TITLE4 << endl ; 
-	cout << setw(TITLE5.length()/2 + 40) << TITLE5 << endl << endl  << endl << endl; 
-	cout << setw(TITLE6.length()/2 + 40) << TITLE6 << endl  << endl; 
-	cout << setw(TITLE7.length()/2 + 40) << TITLE7 << endl << endl << endl << endl << endl; 
-	cout << right << setw(74) << TITLE8 ; 
 
-	system("pause > null");
+	cout << endl<< endl<< endl;
+	middleText(TITLE2);
+		cout << endl ;
+	middleText(TITLE3);
+		cout << endl << endl<< endl;
+
+	middleText(TITLE4);	
+	cout << endl;
+
+	middleText(TITLE5);	
+	cout << endl<< endl<< endl<< endl;
+
+	middleText(TITLE6);	
+	cout << endl;
+
+	middleText(TITLE7);	
+	cout << endl<< endl<< endl << endl<< endl << "t\t\t\t";
+
+	middleText(TITLE8);	
+
+
+	//cout << setw(TITLE2.length()/2 + 40) << TITLE2 << endl  << endl; 
+	//cout << setw(TITLE3.length()/2 + 40) << TITLE3 << endl << endl << endl; 
+	//cout << setw(TITLE4.length()/2 + 40) << TITLE4 << endl ; 
+	//cout << setw(TITLE5.length()/2 + 40) << TITLE5 << endl << endl  << endl << endl; 
+	//cout << setw(TITLE6.length()/2 + 40) << TITLE6 << endl  << endl; 
+	//cout << setw(TITLE7.length()/2 + 40) << TITLE7 << endl << endl << endl << endl << endl; 
+	//cout << right << setw(74) << TITLE8 ; 
+
+
+	system("pause>nul");
 }
 
 void pageTitle(string title)
