@@ -369,7 +369,8 @@ int searchUser(UserProfile arrUserProfile[],Buffer *tmpData, int &counter, strin
 }
 void pausePrompt(string message)
 {
-	cout << "\n\t" << message;
+	//cout << "\n\n\t";
+	myCout1( message,2,1);
 	system("pause>nul");
 }
 bool userPass(UserProfile arrUserProfile[], Buffer *tmpData, int counter)

@@ -84,6 +84,8 @@ void pageTitle(string);
 void programTitle();
 void formTitle(string, int&, int);
 void pausePrompt(string);
+void myCout1(string, int, int );
+
 
 int  login();
 int  addUser();   // teacher& student
@@ -154,15 +156,16 @@ void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer 
 void sortStudentList(UserProfile[],int, Buffer*);
 void courseStudentList(UserProfile[],int,int[],Buffer*);
 void getStudentRecord(UserProfile [], Buffer *, int , int &);
+
 //bool getUserProfile(UserProfile[], Buffer *, int &, int);
 
 
 //student
 int studentOperation(StudentResult [], Groups[], Course[], UserProfile[], Buffer *, int, int);
-int viewGradeComponent();
+//int viewGradeComponent();
 int listCourseGades();
 void studentCourseList(UserProfile[], StudentResult[], Course[], int , Buffer *, int);
-
+void gradeComponent(Course[], StudentResult[], Buffer *, int, int);
 
 //returns User ID and sets tmpData or return -1
 int searchUser(UserProfile[],Buffer *, int &);

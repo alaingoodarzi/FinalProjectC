@@ -24,7 +24,7 @@ void welcomePage()
 	const string TITLE5="Automn 2015";
 	const string TITLE6="Teacher";
 	const string TITLE7="Quang Hoang Cao ";
-	const string TITLE8="Press any key ...";
+	const string TITLE8="Press any key";
 
 	programTitle();
 
@@ -44,7 +44,7 @@ void welcomePage()
 	cout << endl;
 
 	middleText(TITLE7);	
-	cout << endl<< endl<< endl << endl<< endl << "t\t\t\t";
+	cout << endl<< endl<< endl << endl<< endl ;
 
 	middleText(TITLE8);	
 
@@ -79,9 +79,10 @@ void middleText(string text)
 }
 void programTitle()
 {
-	const string TITLE1="STUDENTS GRADE DATA SYSTEM";
-	cout << endl
-	     << setw(TITLE1.length()/2 + 40) << TITLE1 ;
+	const string TITLE="    STUDENTS GRADE DATA SYSTEM";
+	myCout1(TITLE,1,3);
+//	cout << endl
+//	     << setw(TITLE1.length()/2 + 40) << TITLE1 ;
 }
 // lists UI design
 void   listHeader(string listTitles[], int titleNumber)

@@ -39,7 +39,18 @@ int main()
 				studentOperation(arrStudentResults, arrGroups, arrCourses, arrUserProfile, &tmpData, counter, MAX);
 				break;
 			case 3 :
-				//choice = exitPrompt("Are you sure you want to exit program",3);
+				
+				if (exitPrompt("Are you sure you want to exit program",3) == 3)
+				{
+					system("cls");
+					myCout1("Thank you for using my project.  Good Buy!",10,2);
+					
+					system("pause>nul");
+				}
+				else
+				{
+					choice = 0;
+				}
 				break;
 			default :
 				break;

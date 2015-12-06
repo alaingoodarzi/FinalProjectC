@@ -202,7 +202,7 @@ void myCout1(string myText, int noEndls, int noTabs)
 		
 		cout << array[jrand]  ;
 		
-		Sleep(5);  // controls random character display speed 
+		Sleep(2);  // controls random character display speed 
 	}
 
 

@@ -20,7 +20,7 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 		case 2 :
 			//"Add Student Grade";
 			addStudentGrade(arrUserProfile,arrCourse, arrGroups, arrStudentResult, tmpData, MAX, counter );
-			break;
+		break;
 		case 3 :
 			//"Search student grade";
 			teacherSearchGradeOperation(arrUserProfile, arrStudentResult, arrCourse, tmpData, counter, MAX);
@@ -40,7 +40,10 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 		default :
 			break;
 		}
-		//system("pause>null");
+		if (choice != 6 && choice != 3)
+		{
+			pausePrompt("Press any key to return to teachers menu....");
+		}	
 
 	}while(choice != 6);
 
@@ -102,7 +105,7 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 			cout << "\t     Project grade: " << tmpData->stdProject << endl;
 			cout << "\tMidtrem exam grade: " << tmpData->stdMidterm << endl;
 			cout << "\t  Final exam grade: " << tmpData->stdFinal   << endl;
-			cout << "\n\n\tPress any key to continue...";
+			//cout << "\n\n\tPress any key to continue...";
 			//system("pause>nul");
 			break;
 		}else
@@ -127,30 +130,6 @@ int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arr
 		}
 	} while (counter < MAX);
 }
-//if user exists, returnd true, sets tmpData if no returm false
-//bool getUserProfile(UserProfile arrUserProfile[],Buffer *tmpData , int &counter, int userID)
-//{
-//	bool jFound = false;
-//	int jIndex = 0;
-//	jIndex = checkIdDuplication(arrUserProfile, counter, userID);
-//	if (jIndex > -1 )  // student already in the list
-//	{
-//		jFound = true;
-//		tmpData->stdID = arrUserProfile[jIndex].userID;
-//		tmpData->stdFname = arrUserProfile[jIndex].fname;
-//		tmpData->stdLname = arrUserProfile[jIndex].lname;
-//		tmpData->stdPass = arrUserProfile[jIndex].passWord;
-//		tmpData->stdGroupID = arrUserProfile[jIndex].groupID;
-//		//cout << "\tStudent first name: " << tmpData->stdFname << endl;
-//		//cout << "\t Student last name: " << tmpData->stdLname << endl;
-//		//cout << "\t  Student password: " << tmpData->stdPass << endl;
-//		//cout << "\t     Student group: " << tmpData->stdGroupID << endl;
-//		return true;
-//	}else  // new student
-//	{
-//		return false;
-//	}
-//}
 void getStudentGrade(StudentResult arrStudentResult[], Buffer *tmpData, int &counter)
 {
 	bool found = false;
@@ -179,18 +158,6 @@ void getStudentGrade(StudentResult arrStudentResult[], Buffer *tmpData, int &cou
 		}
 	}
 }
-//int newStdID(UserProfile arrUserProfile[], int &counter, int MAX) //
-//{
-//	int newId = 0;
-//	cout << "\n\t 7 digit ID number: ";
-//	while(!(cin >> newId ) || (newId < 1000000 || newId > 9999999) )
-//	{
-//		cout << "\n\tInavlid! Try again (7 digit number): ";
-//		cin.clear();
-//		cin.ignore(numeric_limits<streamsize>::max(),'\n');
-//	}	
-//	return newId;
-//}
 int chooseGroup(Groups arrGroups[], int MAX)
 {
 	cout << "\tStudent group: ";
@@ -227,7 +194,7 @@ void chooseCourse(Course arrCourses[], int MAX, Buffer *tmpData)
 		{
 			if (arrCourses[i].groupID == tmpData->stdGroupID)
 			{
-				cout << "\n\t\t\t" << jCounter + 1 << "." << arrCourses[i].courseID;
+				cout << "\n\t\t\t   " << jCounter + 1 << "." << arrCourses[i].courseID;
 				arrTmpCourseID[jCounter] = arrCourses[i].courseID;
 				arrTmpCourseTitle[jCounter] = arrCourses[i].courseTitle;
 				jCounter++;
@@ -238,7 +205,7 @@ void chooseCourse(Course arrCourses[], int MAX, Buffer *tmpData)
 			break;
 		}
 	}
-	cout << "\tEnter course number: ";
+	cout << "\n\n\t\t\t   Enter course number: ";
 	int choice = getMenuChoiceOK( jCounter );
 	//cin.ignore();
 	tmpData->   stdCourseID =    arrTmpCourseID[choice - 1];
@@ -310,7 +277,7 @@ void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arr
 				gradeList(arrStudentResult, tmpData, counter);
 			}
 			break;
-			pausePrompt("Press any key to return to menu....");
+			//pausePrompt("Press any key to return to menu....");
 		case 2 :
 			//searchGradeByName('f');
 			if (searchUser(arrUserProfile, tmpData, counter, 'f') == -1)
@@ -322,7 +289,7 @@ void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arr
 				gradeList(arrStudentResult, tmpData, counter);
 			}
 			break;
-			pausePrompt("Press any key to return to menu....");
+			//pausePrompt("Press any key to return to menu....");
 		case 3 :
 			//searchGradeByName('l');
 						
@@ -335,7 +302,7 @@ void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arr
 				gradeList(arrStudentResult, tmpData, counter);
 			}
 			break;
-			pausePrompt("Press any key to return to menu....");
+			//pausePrompt("Press any key to return to menu....");
 		case 4 :
 			//serchGradeByName("fl");
 						//searchGradeByName('f');
@@ -348,14 +315,22 @@ void teacherSearchGradeOperation(UserProfile arrUserProfile[], StudentResult arr
 				gradeList(arrStudentResult, tmpData, counter);
 			}
 			break;
-			pausePrompt("Press any key to return to menu....");
+			//pausePrompt("Press any key to return to menu....");
 		case 5 :
-			//choice = exitPrompt("Are you sure you want to reurn to previous menu",5);
+			/*if (exitPrompt("Are you sure you want to reurn to previous menu",5) == 5)
+			{
+				
+			};*/
 			break;
 		default :
 			break;
 		}
-		
+
+		if (choice != 5)
+		{
+			pausePrompt("Press any key to return to menu....");
+		}
+
 	}while(choice != 5);
 
 }
@@ -438,8 +413,9 @@ void courseGradeList(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 	}
 	chooseCourse(arrCourse, MAX, tmpData);
 	system("cls");
-	
-	cout << "\n\n\n\n\n";
+	programTitle();
+	pageTitle("TEACHERS MENU/STUDENTS GRADE LIST");
+	cout << "\n\n";
 	middleText("Course Number: " + tmpData->stdCourseID + "\n" );
 	middleText("Course Title: " + tmpData->stdCourseTitle + "\n" );
 	middleText("Instructor: " + tmpData->tchFname + " " + tmpData->tchLname + "\n" );
@@ -485,7 +461,7 @@ void courseGradeList(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 	}
 	cout << "\n\n\tNumber of students who passed the course: " << nPassed << endl << endl;
 	cout << "\tNumber of students who failed the course: " << nFailed << endl;
-	pausePrompt("Press any key to return to teahcers menu....");
+	//pausePrompt("\n\nPress any key to return to teahcers menu....");
 	
 }
 string getFullName(UserProfile arrUserProfile[], int studentID, int MAX)
@@ -530,7 +506,11 @@ void sortStudentList(UserProfile arrUserProfile[],int counter, Buffer *tmpData)
 }
 void courseStudentList(UserProfile arrUserProfile[], int counter, int arrSortedStdId[], Buffer *tmpData)
 {
-	string listTitles[] = {"STUDENT LIST",
+	system("cls");
+	programTitle();
+	pageTitle("TEACHERS MENU/STUDENT LIST");
+
+	string listTitles[] = {"SORTED LIST",
 							"ID      ",
 							"first name              ",
 							"last name               ",
@@ -550,7 +530,7 @@ void courseStudentList(UserProfile arrUserProfile[], int counter, int arrSortedS
 				 << right << setw( listTitles[4].length())     << tmpData->stdGroup << endl;
 		}
 	}
-	pausePrompt("Press any key to return to teahcers menu....");
+	//pausePrompt("Press any key to return to teahcers menu....");
 } 
 void getStudentRecord(UserProfile arrUserProfile[], Buffer *tmpData, int stdId, int &counter)
 {

@@ -23,7 +23,8 @@ int studentOperation(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 			studentCourseList(arrUserProfile,  arrStudentResult,  arrCourse,  counter,  tmpData,  MAX);
 			break;
 		case 2 :
-			cout << "second student choice";
+			tmpData->stdID = tmpData->currentUserId;
+			gradeComponent(arrCourse, arrStudentResult, tmpData, counter, MAX );			
 			break;
 		case 3 :
 				tmpData->stdID = tmpData->currentUserId;
@@ -31,12 +32,15 @@ int studentOperation(StudentResult arrStudentResult[], Groups arrGroups[], Cours
 				gradeList(arrStudentResult, tmpData, counter);			
 			break;
 		case 4 :
-			choice = exitPrompt("Are you sure you want to reurn to main menu",4);
+			//choice = exitPrompt("Are you sure you want to reurn to main menu",4);
 			break;
 		default :
 			break;
 		}
-		system("pause>nul");
+		if(choice != 4 )
+		{
+			pausePrompt("Press any key to return to student menu....");
+		}
 
 	}while(choice != 4);
 
@@ -115,3 +119,55 @@ void getTeacherInfo(UserProfile arrUserProfile[], Buffer *tmpData, int MAX)
 		}
 	}
 }
+
+
+void gradeComponent(Course arrCourse[], StudentResult arrStudentResult[], Buffer *tmpData, int counter, int MAX)
+{
+	system("cls");
+	programTitle();
+	cout << "\n\n";
+	//("pause");
+	//middleText("Course Number: " + tmpData->stdCourseID + "\n" );
+	//middleText("Course Title: " + tmpData->stdCourseTitle + "\n" );
+	middleText("Instructor: " + tmpData->tchFname + " " + tmpData->tchLname + "\n" );
+	middleText("Session: Automn 2015\n" );
+	middleText("Group: " + to_string(tmpData->stdGroupID) + "\n" );
+	
+	chooseCourse(arrCourse, MAX, tmpData);
+
+	cout << "\n\n\tAvailable grade components: ";
+
+	string arrComponents[] = {"1.Project",
+							  "2.Midterm Exam",
+							  "3.Final Exam",
+							  "4.Final result"};
+	cout << endl;
+	for (int i = 0; i < 4; i++)
+	{
+		cout << "\t\t\t\t\t" << arrComponents[i] << endl;
+	}
+	cout << "\n\t\t\t\t\tSelect component number:";
+	int choice = getMenuChoiceOK(4);
+
+	//for ( int i = 0; i < MAX; i++)
+	//{
+	//	if (arrCourses[i].courseN > 0) // prevent searching empty records
+	//	{
+	//		if (arrCourses[i].groupID == tmpData->stdGroupID)
+	//		{
+	//			cout << "\n\t\t\t" << jCounter + 1 << "." << arrCourses[i].courseID;
+	//			arrTmpCourseID[jCounter] = arrCourses[i].courseID;
+	//			arrTmpCourseTitle[jCounter] = arrCourses[i].courseTitle;
+	//			jCounter++;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		break;
+	//	}
+	//}
+
+	pausePrompt("Press any key to return to teachers menu....");
+	
+}
+

@@ -1,19 +1,22 @@
-﻿Build started 12/3/2015 12:53:40 PM.
-     1>Project "C:\MyProjects\FinalProjectC\finalProject.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/6/2015 12:50:39 PM.
+     1>Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt studentImp.cpp
-         studentImp.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt teacherImp.cpp
+         teacherImp.cpp
+     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(438): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(480): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(132): warning C4715: 'addStudentGrade' : not all control paths return a value
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\MyProjects\FinalProjectC\Debug\finalProject.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\MyProjects\FinalProjectC\Debug\finalProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\MyProjects\FinalProjectC\Debug\finalProject.lib" /MACHINE:X86 Debug\validationImp.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.lib" /MACHINE:X86 Debug\validationImp.obj
          Debug\finalProjectApp.obj
          Debug\menuImp.obj
          Debug\operationImp.obj
          Debug\uiDesignImp.obj
          Debug\studentImp.obj
          Debug\teacherImp.obj
-         finalProject.vcxproj -> C:\MyProjects\FinalProjectC\Debug\finalProject.exe
-     1>Done Building Project "C:\MyProjects\FinalProjectC\finalProject.vcxproj" (Build target(s)).
+         finalProject.vcxproj -> C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe
+     1>Done Building Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.26
+Time Elapsed 00:00:06.86
