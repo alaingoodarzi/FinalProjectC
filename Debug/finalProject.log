@@ -1,10 +1,27 @@
-﻿Build started 12/6/2015 12:50:39 PM.
+﻿Build started 12/7/2015 12:29:22 AM.
      1>Project "C:\StructureProgramingLabs\FinalProjectC\finalProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt teacherImp.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt finalProjectApp.cpp menuImp.cpp operationImp.cpp studentImp.cpp teacherImp.cpp uiDesignImp.cpp validationImp.cpp
+         studentImp.cpp
+         operationImp.cpp
+         finalProjectApp.cpp
+         Generating Code...
+         Compiling...
+         validationImp.cpp
+     1>c:\structureprograminglabs\finalprojectc\validationimp.cpp(113): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\validationimp.cpp(145): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\validationimp.cpp(166): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\validationimp.cpp(174): warning C4018: '>' : signed/unsigned mismatch
+         uiDesignImp.cpp
          teacherImp.cpp
-     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(438): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
-     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(480): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(401): warning C4244: 'return' : conversion from 'double' to 'int', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(443): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         menuImp.cpp
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(182): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(192): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(271): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\structureprograminglabs\finalprojectc\menuimp.cpp(284): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Generating Code...
      1>c:\structureprograminglabs\finalprojectc\teacherimp.cpp(132): warning C4715: 'addStudentGrade' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\StructureProgramingLabs\FinalProjectC\Debug\finalProject.lib" /MACHINE:X86 Debug\validationImp.obj
@@ -19,4 +36,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.86
+Time Elapsed 00:00:15.05

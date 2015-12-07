@@ -5,7 +5,7 @@
 // document to mr Cao :  what you learned from the project
 
 
-int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData)
+int  teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData)
 {
 	int choice = 0 ;
 	do
@@ -50,7 +50,7 @@ int teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Cours
 	return 0;
 
 }
-int teacherCourses( Course arrCourses[], Buffer *tmpData)
+int  teacherCourses( Course arrCourses[], Buffer *tmpData)
 {
 	system("cls");
 	cout << "\n\n\n";
@@ -66,7 +66,7 @@ int teacherCourses( Course arrCourses[], Buffer *tmpData)
 	teacherCoursList(arrCourses, listTitles, titleLengths, tmpData );
 	return 0;
 }
-int addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
+int  addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData ,int MAX, int &counter)
 {
 
 	
@@ -158,7 +158,7 @@ void getStudentGrade(StudentResult arrStudentResult[], Buffer *tmpData, int &cou
 		}
 	}
 }
-int chooseGroup(Groups arrGroups[], int MAX)
+int  chooseGroup(Groups arrGroups[], int MAX)
 {
 	cout << "\tStudent group: ";
 	int i = 0;
@@ -233,7 +233,6 @@ void saveStudentInfo(UserProfile arrUserProfile[], StudentResult arrStudentResul
 	arrStudentResult[counter].finalExam = tmpData->stdFinal;
 
 }
-// Validation
 int  checkIdDuplication(UserProfile arrUserProfile[], int &counter, int newID)  // need to be changed using pointer
 {
 	for (int i = 0; i < counter; i++)

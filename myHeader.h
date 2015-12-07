@@ -171,10 +171,13 @@ void gradeComponent(Course[], StudentResult[], Buffer *, int, int);
 int searchUser(UserProfile[],Buffer *, int &);
 int searchUser(UserProfile[],Buffer *, int&, char);
 int searchUser(UserProfile[],Buffer *, int&, string);
-
-
 bool userPass(UserProfile[], Buffer *, int);
 string hiddenPassPhrase(string, char);
 bool checkUp(int, string, UserProfile [], Buffer *, int);
+
+
+
+
+
 
 #endif // !AG_FINAL_PROJECT

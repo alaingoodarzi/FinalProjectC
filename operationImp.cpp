@@ -465,6 +465,11 @@ string hiddenPassPhrase(string message, char how)
 	spass = pass.str();
 	return spass;
 }
+
+
+
+
+
 bool checkUp(int user,string pass,UserProfile arrUserProfile[],Buffer *tmpData, int counter)
 {
 	pass.erase(pass.size() - 1);
