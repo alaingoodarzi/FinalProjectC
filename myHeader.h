@@ -78,52 +78,52 @@ int  exitPrompt(string,int);
 int strUser();
 float floatValue(int, string);
 
-//General functions
+//prompt functions
 void welcomePage();
 void pageTitle(string);
 void programTitle();
 void formTitle(string, int&, int);
 void pausePrompt(string);
 void myCout1(string, int, int );
+void middleText(string);
+string hiddenPassPhrase(string, char);
+bool userPass(UserProfile[], Buffer *, int);
+bool checkUp(int, string, UserProfile [], Buffer *, int);
 
 
+// initializeand interactions
 int  login();
 int  addUser();   // teacher& student
 int  checkDuplicateID();
 int  addGroup();
 int  addCourse();
-int  footer();
-void middleText(string);
 bool stdCrsDuplicate(StudentResult[],string, int, int&);
-int  finalResult(float, float , float );
 string getFullName(UserProfile[], int, int);
-
-
-void reportTitle();
-void listDisplay();
-
 void initialValues( UserProfile[], Groups[], Course[], int, Buffer*, int&, StudentResult[]);
-
 string newNameFamily(string);
-
 int  chooseGroup(Groups[], int);
 void chooseCourse(Course[], int, Buffer*);
 
+// calculation
+int  finalResult(float, float , float );
 
-// list Functions
+
+
+// report related 
+void reportTitle();
+void listDisplay();
 string leftMarginSpace(string[], int);
 void listHeader(string[],int);
 void teacherCoursList(Course[], string[], int[], Buffer *);
 void titleLength(int[], string[]);
 void getCourseInfo(Course[], string , Buffer *, int );
 void getTeacherInfo(UserProfile[], Buffer *, int);
-
 int listcourses();  // teacher & student
 
 
 
 
-
+// menu related
 int mainMenu();
 int teacherMenu();
 int studentMenu(string);
@@ -136,28 +136,20 @@ int teacherCourses(Course[], Buffer *);
 int addStudentGrade( UserProfile[], Course[], Groups[], StudentResult[], Buffer *, int, int&);
 int newStdID(UserProfile[], int&,int);
 int checkIdDuplication(UserProfile[], int&, int);
-
 void displayNewStudent(Buffer*);
-
 void getStudentGrade(StudentResult[],Buffer*, int &);
-
 int searchStd(int);
 int searchStd(string,char);
-
 int sortStudent();
 int listCourseStudentsGrades();
-
 void saveStudentInfo(UserProfile[], StudentResult[], Buffer *, int&);
 void teacherSearchGradeOperation(UserProfile[], StudentResult[], Course[], Buffer *, int &,int);
-
-
 void gradeList(StudentResult [], Buffer *, int &);
 void courseGradeList(StudentResult[], Groups[], Course[], UserProfile[], Buffer *, int , int);
 void sortStudentList(UserProfile[],int, Buffer*);
 void courseStudentList(UserProfile[],int,int[],Buffer*);
 void getStudentRecord(UserProfile [], Buffer *, int , int &);
 
-//bool getUserProfile(UserProfile[], Buffer *, int &, int);
 
 
 //student
@@ -166,14 +158,9 @@ int studentOperation(StudentResult [], Groups[], Course[], UserProfile[], Buffer
 int listCourseGades();
 void studentCourseList(UserProfile[], StudentResult[], Course[], int , Buffer *, int);
 void gradeComponent(Course[], StudentResult[], Buffer *, int, int);
-
-//returns User ID and sets tmpData or return -1
 int searchUser(UserProfile[],Buffer *, int &);
 int searchUser(UserProfile[],Buffer *, int&, char);
 int searchUser(UserProfile[],Buffer *, int&, string);
-bool userPass(UserProfile[], Buffer *, int);
-string hiddenPassPhrase(string, char);
-bool checkUp(int, string, UserProfile [], Buffer *, int);
 
 
 

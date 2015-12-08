@@ -52,13 +52,7 @@ void studentCourseList(UserProfile arrUserProfile[], StudentResult arrStudentRes
 							"Teacher Name     "};
 	listHeader(listTitles, 4);
 	string leftMargin = leftMarginSpace(listTitles,4);
-	// as roie shomare daneshjooi courshash ro peida kone
-	//string *arrTmpCourseID
-	//string *arrTmpCourseTitle
-	//arrTmpCourseID = new string[MAX];
-	//arrTmpCourseTitle = new string[MAX];
-	//int jCounter = 0;
-				
+					
 	string fullName = tmpData->stdLname + "," + tmpData->stdFname;
 
 	for ( int i = 0; i < counter; i++)
@@ -112,9 +106,7 @@ void gradeComponent(Course arrCourse[], StudentResult arrStudentResult[], Buffer
 	system("cls");
 	programTitle();
 	cout << "\n\n";
-	//("pause");
-	//middleText("Course Number: " + tmpData->stdCourseID + "\n" );
-	//middleText("Course Title: " + tmpData->stdCourseTitle + "\n" );
+
 	middleText("Instructor: " + tmpData->tchFname + " " + tmpData->tchLname + "\n" );
 	middleText("Session: Automn 2015\n" );
 	middleText("Group: " + to_string(tmpData->stdGroupID) + "\n\n" );

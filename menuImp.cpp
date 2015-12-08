@@ -7,12 +7,6 @@
 #include<windows.h>
 #include <limits>
 #include<ctype.h>
-
-
-// I am looking for fare wage
-// Clinical Reasearch Organization. JSS CRO Companey.(john sampalace)
-// Wolf medical data,
-
 using namespace std;
 
 
@@ -230,18 +224,6 @@ void myCout1(string myText, int noEndls, int noTabs)
 	delete x;
 	return;
 }
-// lab4 
-// function:   myMenu1 
-// action:     This function displays a menu with special effects
-// argumnet:   array pointer, 
-//             array size, 
-//             beginning line, 
-//             beginning column, 
-//             random char display speed in milliseconds, 
-// returns:    none
-// used by:    mainmenu()
-// created by: Alireza Goodarzi
-// 
 void myMenu1(string *menuItems,int menuItemNumber, int beginLine, int beginCol,int lineBetween, int charDispSpeed, int horzantalScrolSpeed )
 {
 

@@ -218,11 +218,15 @@ int    exitPrompt(string message, int exitValue)
 }
 void   displayNewStudent(Buffer *tmpData)
 {
-	cout << "\n\t New Grade information: " << endl;
-	cout << "\t Student ID:         " << tmpData->stdID          << endl 
+	system("cls");
+	programTitle();
+	pageTitle("CONFIRM NEW STUDENT GRADES");
+	cout << "\n\n\t New Grade information: " << endl;
+	cout << "\n\t Student ID:         " << tmpData->stdID          << endl 
 		 << "\t Student Name:       " << tmpData->stdFname       << endl
 		 << "\t Student Family:     " << tmpData->stdLname       << endl
 		 << "\t Student Group:      " << tmpData->stdGroupID     << endl
+		 << "\t Pass Word:          " << tmpData->stdPass        << endl
 		 << "\t Course ID:          " << tmpData->stdCourseID    << endl
 		 << "\t Course Name:        " << tmpData->stdCourseTitle << endl
 		 << "\t Progect grade:      " << tmpData->stdProject     << endl

@@ -6,17 +6,6 @@ using namespace std;
 
 void welcomePage()
 {
-	//Introduction
-	//Development Process
-		//Analysis
-		//Design
-		//Implementatio
-		//Testing (form)
-	//Conclusion
-		//what learned
-		//The worth issue spend more time in logic and coding
-		//demo from exe file. with a plan
-
 	system("cls");
 	const string TITLE2="By";
 	const string TITLE3="Alireza Goodarzi";

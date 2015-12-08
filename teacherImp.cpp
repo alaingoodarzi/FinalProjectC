@@ -2,9 +2,16 @@
 #include<string>
 #include<iomanip>
 #include"myHeader.h"
-// document to mr Cao :  what you learned from the project
 
 
+
+//---------------------------------------------
+// function: teacherOperations
+//  Purpose: handles teachers menu functions
+//Parameter: all data structures array pointers,maimum number aof recoed, list number
+//   return: 0 success
+//   Use in: teachers menu
+//----------------------------------------------
 int  teacherOperations(int MAX, int &counter, UserProfile arrUserProfile[], Course arrCourse[], Groups arrGroups[], StudentResult arrStudentResult[], Buffer *tmpData)
 {
 	int choice = 0 ;
@@ -75,8 +82,14 @@ int  addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups ar
 	{
 		system("cls");
 		pageTitle("STUDENT GRADE FORM");
-		formTitle("Please Enter student information", counter, MAX);
-
+		if(counter < MAX)
+		{
+			formTitle("Please Enter student information", counter, MAX);
+		}
+		else
+		{
+			formTitle("Please Enter student information", MAX , MAX);
+		}
 		
 		if (searchUser(arrUserProfile, tmpData, counter) > -1) //found
 		{
@@ -87,10 +100,15 @@ int  addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups ar
 
 		}else  // new student
 		{
+			if (counter == MAX)
+				{
+					cout << "\n\tThe capacity of list is full!";
+					return 0;
+				}
 			//cin.ignore();
 			tmpData->stdFname = newNameFamily("Student first name");
 			tmpData->stdLname = newNameFamily(" Student last name");
-			tmpData->stdPass = hiddenPassPhrase ("Student password(alphanumeric)", 's');
+			tmpData->stdPass = hiddenPassPhrase ("\n\tStudent password(*?/\.,;\'\" and Space are not allowed)", 's');
 			tmpData->stdGroupID = chooseGroup(arrGroups, MAX);
 		}
 		
@@ -119,11 +137,6 @@ int  addStudentGrade(UserProfile arrUserProfile[], Course arrCourse[], Groups ar
 
 			if(myYesNo("Do you want to save this infromation") == 'Y')
 			{
-				if (counter == MAX)
-					{
-						cout << "\n\tThe capacity of list is full!";
-						return 0;
-					}
 				saveStudentInfo(arrUserProfile, arrStudentResult, tmpData, counter);
 				counter++;
 			}
@@ -160,7 +173,7 @@ void getStudentGrade(StudentResult arrStudentResult[], Buffer *tmpData, int &cou
 }
 int  chooseGroup(Groups arrGroups[], int MAX)
 {
-	cout << "\tStudent group: ";
+	cout << "\n\tStudent group: ";
 	int i = 0;
 	for ( i = 0; i < MAX; i++)
 	{
@@ -546,4 +559,10 @@ void getStudentRecord(UserProfile arrUserProfile[], Buffer *tmpData, int stdId, 
 		}
 	}
 }
-
+//---------------------------------------------
+// function:
+//  Purpose: 
+//Parameter: 
+//   return: 
+//   Use in:  
+//----------------------------------------------

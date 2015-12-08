@@ -489,3 +489,4 @@ bool checkUp(int user,string pass,UserProfile arrUserProfile[],Buffer *tmpData, 
 	}
 	return false;
 }
+

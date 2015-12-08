@@ -24,6 +24,8 @@
 //student user could increase the MAX variable in main () function of finalProjetcApp.cpp file.
 //
 //For verification of default student list, please check initialValues () function in operationImp.cpp file.
+//
+//To test a student you can use student ID:1234567 pass:1234567 
 
 #include<iostream>
 #include<string>
@@ -32,7 +34,7 @@ using namespace std;
 
 int main()
 {
-	const int MAX = 10;
+	const int MAX = 7;
 	int counter = 0;
 	UserProfile arrUserProfile[MAX];
 	Course arrCourses[MAX];
